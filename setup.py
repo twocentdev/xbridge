@@ -8,7 +8,7 @@ import setuptools
 
 setupPath = os.path.abspath(os.path.dirname(__file__))
 
-with open('xbridge/docs/index.rst', encoding='utf-8') as f:
+with open('README.rst', encoding='utf-8') as f:
     long_description = f.read()
 
 about = {}
