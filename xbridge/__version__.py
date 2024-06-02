@@ -9,11 +9,11 @@ XBRL Formatter Setup Configuration.
 # _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
 # "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'
 
-project = "xbridge"
-description = "XBRL Formatter"
+project = "eba-xbridge"
+eba_taxonomy_version = "3.4"
+description = f"XBRL-XML to XBRL-CSV converter for EBA Taxonomy (version {eba_taxonomy_version})"
 url = ""
 version = "0.10"
-eba_taxonomy_version = "3.4"
 author = "Antonio Olleros, Jesus Simon, Javier Hernandez"
 author_email = "antonio.olleros@meaningfuldata.eu, jesus.simon@meaningfuldata.eu, javier.hernandez@meaningfuldata.eu"
 copyright = "2024 MeaningfulData"

@@ -9,4 +9,5 @@ input
 input/instances/95980020140005310927.CON_ES_COREP030100_COREPOF_2023-06-30_20231005110825506_SCRAMBLED.xbrl
 *.pclprof
 input/instances/
-/_build/
+**/_build/
+**/build/

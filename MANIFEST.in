@@ -3,5 +3,8 @@ include setup.py
 include README.md
 recursive-include xbridge *.py *.json
 prune xbridge/Testing
+prune xbridge/docs
+exclude xbridge/Testing/*
+exclude xbridge/docs/*
 prune input
 prune output
