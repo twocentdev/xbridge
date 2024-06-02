@@ -26,7 +26,7 @@ setuptools.setup(
         'Testing': ['*']
     },
     license='Apache 2.0',
-    license_files='license.txt',
+    license_files='LICENSE',
     project_urls={
         'Bug Tracker': 'https://github.com/Meaningful-Data/xbridge/issues',
         'Documentation': 'https://docs.xbridge.meaningfuldata.eu',
