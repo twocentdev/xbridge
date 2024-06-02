@@ -8,6 +8,9 @@ import setuptools
 
 setupPath = os.path.abspath(os.path.dirname(__file__))
 
+with open('xbridge/docs/index.rst', encoding='utf-8') as f:
+    long_description = f.read()
+
 about = {}
 with open('xbridge/__version__.py', 'r') as f:
     exec(f.read(), about)
@@ -18,6 +21,8 @@ setuptools.setup(
     author=about['author'],
     author_email=about['author_email'],
     description=about['description'],
+    long_description=long_description,
+    long_description_content_type='text/x-rst',
     url=about['url'],
     packages=setuptools.find_packages(),
     include_package_data=True,
