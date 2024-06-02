@@ -28,4 +28,7 @@ jobs:
       - name: Build package
         run: pipenv run python setup.py sdist
       - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: pipenv run twine upload dist/*
