@@ -1,0 +1,7 @@
+include MANIFEST.in
+include setup.py
+include README.md
+recursive-include xbridge *.py *.json
+prune Testing
+prune input
+prune output

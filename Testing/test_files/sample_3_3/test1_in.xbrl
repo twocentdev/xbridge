@@ -1,0 +1,1325 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--(C) EBA-->
+<xbrli:xbrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:eba_model="http://www.eba.europa.eu/xbrl/ext/model" xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators" xmlns:eba_dim="http://www.eba.europa.eu/xbrl/crr/dict/dim" xmlns:eba_BA="http://www.eba.europa.eu/xbrl/crr/dict/dom/BA" xmlns:eba_RP="http://www.eba.europa.eu/xbrl/crr/dict/dom/RP" xmlns:eba_BT="http://www.eba.europa.eu/xbrl/crr/dict/dom/BT" xmlns:eba_typ="http://www.eba.europa.eu/xbrl/crr/dict/typ" xmlns:eba_met="http://www.eba.europa.eu/xbrl/crr/dict/met" xmlns:eba_ZZ="http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ" xmlns:eba_GA="http://www.eba.europa.eu/xbrl/crr/dict/dom/GA" xmlns:eba_SC="http://www.eba.europa.eu/xbrl/crr/dict/dom/SC" xmlns:eba_MC="http://www.eba.europa.eu/xbrl/crr/dict/dom/MC" xmlns:eba_RF="http://www.eba.europa.eu/xbrl/crr/dict/dom/RF" xmlns:eba_CA="http://www.eba.europa.eu/xbrl/crr/dict/dom/CA">
+  <link:schemaRef xlink:type="simple" xlink:href="http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/ipu/dc-2022-441/2023-05-30/mod/ipu.xsd"/>
+  <xbrli:unit id="uPURE">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  <find:fIndicators>
+    <find:filingIndicator contextRef="c1">U_01.00</find:filingIndicator>
+    <find:filingIndicator contextRef="c1">U_02.00</find:filingIndicator>
+  </find:fIndicators>
+  <xbrli:context id="c2">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c2">9954</eba_met:si168>
+  <eba_met:si288 contextRef="c2">6162</eba_met:si288>
+  <eba_met:di964 contextRef="c2">6266-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c2">eba_ZZ:x670</eba_met:ei965>
+  <xbrli:context id="c3">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c3">4102</eba_met:si168>
+  <eba_met:si288 contextRef="c3">3520</eba_met:si288>
+  <eba_met:di964 contextRef="c3">2833-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c3">eba_ZZ:x670</eba_met:ei965>
+  <xbrli:context id="c4">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c4">1638</eba_met:si168>
+  <eba_met:si288 contextRef="c4">475</eba_met:si288>
+  <eba_met:di964 contextRef="c4">9017-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c4">eba_ZZ:x672</eba_met:ei965>
+  <xbrli:context id="c5">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c5">5407</eba_met:si168>
+  <eba_met:si288 contextRef="c5">5882</eba_met:si288>
+  <eba_met:di964 contextRef="c5">4346-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c5">eba_ZZ:x670</eba_met:ei965>
+  <xbrli:context id="c6">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c6">5511</eba_met:si168>
+  <eba_met:si288 contextRef="c6">5402</eba_met:si288>
+  <eba_met:di964 contextRef="c6">3460-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c6">eba_ZZ:x672</eba_met:ei965>
+  <xbrli:context id="c7">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c7">834</eba_met:si168>
+  <eba_met:si288 contextRef="c7">792</eba_met:si288>
+  <eba_met:di964 contextRef="c7">0221-01-01</eba_met:di964>
+  <eba_met:ei965 contextRef="c7">eba_ZZ:x671</eba_met:ei965>
+  <xbrli:context id="c8">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c8">eba_GA:BQ</eba_met:ei152>
+  <xbrli:context id="c9">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c9">eba_GA:GG</eba_met:ei152>
+  <xbrli:context id="c10">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c10">eba_GA:TG</eba_met:ei152>
+  <xbrli:context id="c11">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c11">eba_GA:IMF.CL_AREA.7H</eba_met:ei152>
+  <xbrli:context id="c12">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c12">eba_GA:SD</eba_met:ei152>
+  <xbrli:context id="c13">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c13">eba_GA:IL</eba_met:ei152>
+  <xbrli:context id="c14">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c14">8453</eba_met:si168>
+  <eba_met:si809 contextRef="c14">416</eba_met:si809>
+  <eba_met:ei976 contextRef="c14">eba_ZZ:x678</eba_met:ei976>
+  <eba_met:ei966 contextRef="c14">eba_GA:x83</eba_met:ei966>
+  <eba_met:bi967 contextRef="c14">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c14">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c14">8800</eba_met:si969>
+  <eba_met:si970 contextRef="c14">5411</eba_met:si970>
+  <xbrli:context id="c15">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c15">1738</eba_met:si168>
+  <eba_met:si809 contextRef="c15">1283</eba_met:si809>
+  <eba_met:ei976 contextRef="c15">eba_ZZ:x676</eba_met:ei976>
+  <eba_met:ei966 contextRef="c15">eba_GA:x61</eba_met:ei966>
+  <eba_met:bi967 contextRef="c15">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c15">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c15">6194</eba_met:si969>
+  <eba_met:si970 contextRef="c15">3175</eba_met:si970>
+  <xbrli:context id="c16">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c16">285</eba_met:si168>
+  <eba_met:si809 contextRef="c16">7056</eba_met:si809>
+  <eba_met:ei976 contextRef="c16">eba_ZZ:x678</eba_met:ei976>
+  <eba_met:ei966 contextRef="c16">eba_GA:x80</eba_met:ei966>
+  <eba_met:bi967 contextRef="c16">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c16">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c16">1572</eba_met:si969>
+  <eba_met:si970 contextRef="c16">1461</eba_met:si970>
+  <xbrli:context id="c17">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c17">5740</eba_met:si168>
+  <eba_met:si809 contextRef="c17">9162</eba_met:si809>
+  <eba_met:ei976 contextRef="c17">eba_ZZ:x676</eba_met:ei976>
+  <eba_met:ei966 contextRef="c17">eba_GA:x72</eba_met:ei966>
+  <eba_met:bi967 contextRef="c17">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c17">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c17">2217</eba_met:si969>
+  <eba_met:si970 contextRef="c17">2123</eba_met:si970>
+  <xbrli:context id="c18">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c18">1470</eba_met:si168>
+  <eba_met:si809 contextRef="c18">6479</eba_met:si809>
+  <eba_met:ei976 contextRef="c18">eba_ZZ:x678</eba_met:ei976>
+  <eba_met:ei966 contextRef="c18">eba_GA:x82</eba_met:ei966>
+  <eba_met:bi967 contextRef="c18">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c18">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c18">3055</eba_met:si969>
+  <eba_met:si970 contextRef="c18">5325</eba_met:si970>
+  <xbrli:context id="c19">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:si168 contextRef="c19">5582</eba_met:si168>
+  <eba_met:si809 contextRef="c19">101</eba_met:si809>
+  <eba_met:ei976 contextRef="c19">eba_ZZ:x679</eba_met:ei976>
+  <eba_met:ei966 contextRef="c19">eba_GA:x55</eba_met:ei966>
+  <eba_met:bi967 contextRef="c19">true</eba_met:bi967>
+  <eba_met:bi974 contextRef="c19">true</eba_met:bi974>
+  <eba_met:si969 contextRef="c19">8377</eba_met:si969>
+  <eba_met:si970 contextRef="c19">7801</eba_met:si970>
+  <xbrli:context id="c20">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c20">eba_GA:AI</eba_met:ei152>
+  <xbrli:context id="c21">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c21">eba_GA:GN</eba_met:ei152>
+  <xbrli:context id="c22">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c22">eba_GA:PR</eba_met:ei152>
+  <xbrli:context id="c23">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c23">eba_GA:_5B</eba_met:ei152>
+  <xbrli:context id="c24">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c24">eba_GA:IN</eba_met:ei152>
+  <xbrli:context id="c25">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei152 contextRef="c25">eba_GA:CF</eba_met:ei152>
+  <xbrli:context id="c26">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:unit id="uEUR">
+    <xbrli:measure>iso4217:EUR</xbrli:measure>
+  </xbrli:unit>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c26">8481000</eba_met:mi968>
+  <xbrli:context id="c27">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c27">5279000</eba_met:mi968>
+  <xbrli:context id="c28">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c28">8843000</eba_met:mi968>
+  <xbrli:context id="c29">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c29">5090000</eba_met:mi968>
+  <xbrli:context id="c30">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c30">7326000</eba_met:mi968>
+  <xbrli:context id="c31">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c31">3664000</eba_met:mi968>
+  <xbrli:context id="c32">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c32">3078000</eba_met:mi968>
+  <xbrli:context id="c33">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c33">1645000</eba_met:mi968>
+  <xbrli:context id="c34">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c34">5807000</eba_met:mi968>
+  <xbrli:context id="c35">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c35">1342000</eba_met:mi968>
+  <xbrli:context id="c36">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c36">9065000</eba_met:mi968>
+  <xbrli:context id="c37">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi968 unitRef="uEUR" decimals="-3" contextRef="c37">8922000</eba_met:mi968>
+  <xbrli:context id="c38">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c39">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c40">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c41">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c42">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c43">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c44">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c45">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c46">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c47">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c48">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c49">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:RPR">eba_RP:x103</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:GAT">eba_GA:x42</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c50">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c50">eba_ZZ:x703</eba_met:ei971>
+  <xbrli:context id="c51">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c51">eba_ZZ:x700</eba_met:ei971>
+  <xbrli:context id="c52">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c52">eba_ZZ:x702</eba_met:ei971>
+  <xbrli:context id="c53">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c53">eba_ZZ:x703</eba_met:ei971>
+  <xbrli:context id="c54">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c54">eba_ZZ:x700</eba_met:ei971>
+  <xbrli:context id="c55">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:ei971 contextRef="c55">eba_ZZ:x703</eba_met:ei971>
+  <xbrli:context id="c56">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c57">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c58">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c59">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c60">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c61">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x17</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:SCO">eba_SC:x11</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c62">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c63">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c64">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c65">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c66">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c67">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x25</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c68">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c69">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c70">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c71">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>1</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c72">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>2</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <xbrli:context id="c73">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">AT000.MEMSTAAGGALL</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2023-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x7</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x31</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:REF">eba_RF:x91</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CCA">eba_CA:x2</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CLE">eba_BT:x16</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:TCG">
+        <eba_typ:CC>3</eba_typ:CC>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+</xbrli:xbrl>
