@@ -1,4 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# This workflow will install Python dependencies, and run tests
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Python testing
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  testing-and-flake8:
+  testing:
 
     runs-on: ubuntu-latest
 
@@ -26,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pipenv
+          pip install pipenv
           pipenv install
       - name: Run test suite
         run: |
-          pipenv run python -m unittest discover Testing
+          pipenv run python -m unittest discover xbridge/Testing
