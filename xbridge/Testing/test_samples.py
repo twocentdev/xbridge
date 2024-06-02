@@ -9,8 +9,8 @@ from xbridge.Testing.test_samples_base import (TestInstanceConversionBasic,
                                                TestInstanceConversionFull)
 
 
-INPUT_PATH_3_2p3 = Path.cwd() / "Testing" / "test_files" / "sample_3_2_phase3"
-INPUT_PATH_3_3 = Path.cwd() / "Testing" / "test_files" / "sample_3_3"
+INPUT_PATH_3_2p3 = Path(__file__).parent / "test_files" / "sample_3_2_phase3"
+INPUT_PATH_3_3 = Path(__file__).parent / "test_files" / "sample_3_3"
 
 
 class TestCase1(TestInstanceConversionFull):

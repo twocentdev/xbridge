@@ -11,7 +11,7 @@ import pandas as pd
 
 from xbridge.api import convert_instance, load_instance
 
-OUTPUT_PATH = Path.cwd() / "Testing" / "conversions"
+OUTPUT_PATH = Path(__file__).parent / "conversions"
 
 
 class TestInstanceConversionBasic(unittest.TestCase):
