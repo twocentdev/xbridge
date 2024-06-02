@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install poetry
-        run: pipx install poetry
+      - name: Install pipenv
+        run: pip install pipenv
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
