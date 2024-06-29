@@ -212,7 +212,7 @@ class Converter:
             for open_key in table.open_keys:
                 dim_name = mapping_dict.get(open_key)
                 #For open keys, there are no dim_names (they are not mapped)
-                if dim_name:
+                if dim_name and not datapoints.empty:
                     datapoints[open_key] = dim_name + ":" + datapoints[open_key].astype(str)
             datapoints = datapoints.sort_values(by=["datapoint"], ascending=True)
             output_path_table = temp_dir_path / table.url

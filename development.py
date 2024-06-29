@@ -77,8 +77,8 @@ TAXONOMY_PATH = Path(__file__).parent / "input" / "taxonomy" / "FullTaxonomy.7z"
 
 if __name__ == "__main__":
     INPUT_PATH_3_3 = Path(__file__).parent / "xbridge"/ "Testing" / "test_files" / "sample_3_3"
-    INSTANCE_PATH = Path.cwd()  / "input" / "instances" / "scrambled_alm.xbrl"
-    INSTANCE_PATH = INPUT_PATH_3_3 / "test1_in.xbrl"
+    INSTANCE_PATH = Path.cwd()  / "input" / "instances" / "corep_of1.xbrl"
+    # INSTANCE_PATH = INPUT_PATH_3_3 / "test1_in.xbrl"
 
     start = time()
     converter = Converter(INSTANCE_PATH)
