@@ -1,6 +1,6 @@
 [tool.poetry]
 name="eba-xbridge"
-version="1.0.2rc9"
+version="1.0.2"
 authors=[
     "Antonio Olleros <antonio.olleros@meaningfuldata.eu>",
     "Jesús Simon <jesus.simon@meaningfuldata.eu>",
