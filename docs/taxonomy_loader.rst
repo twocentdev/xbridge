@@ -6,6 +6,11 @@ It is the main file to work with, and it is form by the modules, which are the o
 When compressed files (ZIP or 7z) are loaded, modules are called and saved in a JSON file. This is important because it is the main source
 for the rest of information contained in this JSON, such as the taxonomy it belongs or the tables and variables it contains.
 
+.. warning::
+    If the taxonomy is in a 7z package, the command 7z must be available, if
+    not, the process will require to install it. Note that with the EBA
+    taxonomy it may take several minutes.
+
 When modules are loaded, the access to the tables that are form with, are available by just calling them from the JSON created before.
 Each of these tables contains open keys and variables, which are the basic information of the taxonomy. Moreover, its attributes can be extracted.
 

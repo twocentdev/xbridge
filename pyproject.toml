@@ -1,6 +1,6 @@
 [tool.poetry]
 name="eba-xbridge"
-version="1.0.2rc6"
+version="1.0.2rc9"
 authors=[
     "Antonio Olleros <antonio.olleros@meaningfuldata.eu>",
     "Jesús Simon <jesus.simon@meaningfuldata.eu>",
@@ -29,7 +29,6 @@ classifiers=[
 python = "^3.10"
 pandas = "^2.1.4"
 lxml = "^5.2.1"
-py7zr = "^0.11.3"
 
 [tool.poetry.dev-dependencies]
 black = "*"
@@ -38,7 +37,7 @@ pylint = "*"
 sphinx = "*"
 sphinx_rtd_theme = "*"
 twine = "*"
-toml = "^0.10.2"
+toml = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

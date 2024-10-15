@@ -6,22 +6,33 @@ Each time the EBA releases a new taxonomy, the taxonomy_loader.py
 module must be run to reflect the changes in the taxonomy.
 """
 
+import argparse
 import json
 import os
+import shutil
+import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from time import time
 from zipfile import ZipFile
-import argparse
 
 from lxml import etree
-from py7zr import SevenZipFile
 
 from xbridge.modules import Module
 
 MODULES_FOLDER = Path(__file__).parent / "modules"
 INDEX_PATH = MODULES_FOLDER / "index.json"
 DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
+
+
+def _extract_specific_files_7z(file_path: Path, target_path: Path):
+    cmd = [shutil.which('7z'), 'x', f'-o{target_path}', file_path, '*.json', '*dim-def.xml', '-r']
+    if not cmd[0]:
+        raise FileNotFoundError("7z command not found, please install 7zip to be able to extract "
+                                "it and run the script again")
+    process = subprocess.run(cmd, capture_output=True)
+    if process.returncode != 0:
+        raise ValueError(f"Error extracting 7z file {file_path}")
 
 
 class Taxonomy:
@@ -44,20 +55,20 @@ class Taxonomy:
             json.dump(module.to_dict(), fl)
 
     @staticmethod
-    def _get_dim_dom_mapping(root:etree) -> dict:
+    def _get_dim_dom_mapping(root: etree) -> dict:
         ns = {
             'link': 'http://www.xbrl.org/2003/linkbase',
             'xlink': 'http://www.w3.org/1999/xlink'}
         arcroles = root.xpath(
-                '//link:definitionArc[@xlink:arcrole="'
-                'http://xbrl.org/int/dim/arcrole/dimension-domain"]',
+            '//link:definitionArc[@xlink:arcrole="'
+            'http://xbrl.org/int/dim/arcrole/dimension-domain"]',
             namespaces=ns)
         map_dom_mapping = {}
         for element in arcroles:
             dim_locator = element.get('{http://www.w3.org/1999/xlink}from')
             dim = root.xpath(f'//link:loc[@xlink:label = "{dim_locator}"]', namespaces=ns)[0]
-            dim = dim.get('{http://www.w3.org/1999/xlink}href').\
-                split("#")[1].\
+            dim = dim.get('{http://www.w3.org/1999/xlink}href'). \
+                split("#")[1]. \
                 split("_")[1]
             dom_locator = element.get('{http://www.w3.org/1999/xlink}to')
             dom = root.xpath(f'//link:loc[@xlink:label = "{dom_locator}"]', namespaces=ns)[0]
@@ -95,7 +106,7 @@ class Taxonomy:
             for file_path in zip_file.namelist():
                 file_path_obj = Path(file_path)
                 if str(file_path_obj) == \
-                    "www.eba.europa.eu\\eu\\fr\\xbrl\\crr\\dict\\dim\\dim-def.xml":
+                        "www.eba.europa.eu\\eu\\fr\\xbrl\\crr\\dict\\dim\\dim-def.xml":
                     bin_read = zip_file.read(file_path)
                     root = etree.fromstring(bin_read.decode('utf-8'))
                     dim_dom_mapping = self._get_dim_dom_mapping(root)
@@ -103,8 +114,8 @@ class Taxonomy:
                         json.dump(dim_dom_mapping, fl, indent=4)
 
                 if (
-                    file_path_obj.suffix == ".json"
-                    and file_path_obj.parent.name == "mod"
+                        file_path_obj.suffix == ".json"
+                        and file_path_obj.parent.name == "mod"
                 ):
                     print(f"Loading module {file_path_obj.stem.upper()}")
                     start = time()
@@ -161,19 +172,13 @@ class Taxonomy:
 
     @staticmethod
     def _convert_7z_to_zip(input_path):
+
         """Converts a 7z file to a zip file"""
         start = time()
         with TemporaryDirectory() as temp_folder:
-            with SevenZipFile(input_path, mode="r") as seven_zip:
-                # Extract only the JSON files needed in other parts of code
-                target_files = [
-                    file for file in seven_zip.getnames() if \
-                        (file.endswith(".json") or file.endswith("dim-def.xml"))
-                ]
-                seven_zip.extract(path=temp_folder, targets=target_files)
+            _extract_specific_files_7z(input_path, Path(temp_folder))
             extracted = time()
-            elapsed = round(extracted - start, 3)
-            print(f"7z file extracted in {elapsed} s")
+            print(f"7z file extracted in {extracted - start} s")
             with ZipFile(input_path.with_suffix(".zip"), mode="w") as zip_file:
                 for root, _, files in os.walk(temp_folder):
                     for file in files:
