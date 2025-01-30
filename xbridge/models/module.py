@@ -1,3 +1,7 @@
+from models.variable import Variable
+from modules import Table
+
+
 class Module:
     """Class representing an XBRL Module.
 
@@ -25,7 +29,7 @@ class Module:
         self.__url: str = url
         self.__taxonomy_code: str = taxonomy_code
         self.__date: str = date
-        self.__tables = tables if tables is not None else []
+        self.__tables: [Table] = tables if tables is not None else []
         self.__taxonomy_module_path: str = None
 
     @property
@@ -45,7 +49,7 @@ class Module:
         return self.__date
 
     @property
-    def tables(self):
+    def tables(self) -> [Table]:
         return self.__tables.copy()
 
     @property
@@ -79,11 +83,17 @@ class Module:
                 result[k] = v
         return result
 
-    def get_table(self, table_code):
+    def get_table(self, table_code: str):
         for table in self.tables:
             if table.code == table_code:
                 return table
         raise ValueError(f"Table {table_code} not found in module {self.code}")
+
+    def get_variables(self):
+        variables: [Variable] = []
+        for table in self.tables:
+            variables.append(table.variables)
+        return variables
 
     def to_dict(self):
         return {
