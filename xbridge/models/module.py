@@ -1,5 +1,5 @@
+from models.table import Table
 from models.variable import Variable
-from modules import Table
 
 
 class Module:
