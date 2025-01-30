@@ -22,7 +22,7 @@ class Table:
     """
 
     def __init__(self, code=None, url=None, open_keys=None, variables=None, attributes=None, input_zip_path=None,):
-        self.table_zip_path = input_zip_path # TODO: May fall from here
+        self.table_zip_path = input_zip_path # TODO: May fall from here. To builders?
         self.__code = code
         self.__url = url
         self.__open_keys = open_keys if open_keys is not None else []
