@@ -20,13 +20,13 @@ class Module:
 
     """
 
-    def __init__(self, code=None, url=None, taxonomy_code=None, date=None, tables=None):
-        self.__code = code
-        self.__url = url
-        self.__taxonomy_code = taxonomy_code
-        self.__date = date
+    def __init__(self, code: str=None, url: str=None, taxonomy_code: str=None, date: str=None, tables=None):
+        self.__code: str = code
+        self.__url: str = url
+        self.__taxonomy_code: str = taxonomy_code
+        self.__date: str = date
         self.__tables = tables if tables is not None else []
-        self.__taxonomy_module_path = None
+        self.__taxonomy_module_path: str = None
 
     @property
     def code(self):
@@ -51,6 +51,10 @@ class Module:
     @property
     def taxonomy_module_path(self):
         return self.__taxonomy_module_path
+
+    @taxonomy_module_path.setter
+    def taxonomy_module_path(self, path: str):
+        self.__taxonomy_module_path: str = path
 
     @property
     def variables_location(self):
