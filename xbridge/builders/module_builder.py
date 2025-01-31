@@ -10,6 +10,7 @@ class ModuleBuilder:
         self.__taxonomy_code: str = ""
         self.__date: str = ""
         self.__tables: [Table] = []
+        self.__taxonomy_module_path: str = ""
 
     def set_code(self, code: str):
         self.__code = code
@@ -26,6 +27,10 @@ class ModuleBuilder:
     def add_table(self, table: Table):
         self.__tables.append(table)
 
+    def set_taxonomy_module_path(self, taxonomy_module_path: str):
+        self.__taxonomy_module_path = taxonomy_module_path
+
     def build(self) -> Module:
-        return Module(self.__code, self.__url, self.__taxonomy_code, self.__date, self.__tables)
-    
+        mod = Module(self.__code, self.__url, self.__taxonomy_code, self.__date, self.__tables)
+        mod.taxonomy_module_path = self.__taxonomy_module_path
+        return mod

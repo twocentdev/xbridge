@@ -30,7 +30,7 @@ class Module:
         self.__taxonomy_code: str = taxonomy_code
         self.__date: str = date
         self.__tables: [Table] = tables if tables is not None else []
-        self.__taxonomy_module_path: str = None
+        self.__taxonomy_module_path: str = ""
 
     @property
     def code(self):
