@@ -37,4 +37,3 @@ class TableBuilder:
     def build(self) -> Table:
         return Table(self.__code, self.__url, self.__open_keys,
                      self.__variables, self.__attributes, self.__table_zip_path)
-    

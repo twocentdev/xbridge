@@ -117,6 +117,7 @@ class Taxonomy:
                         file_path_obj.suffix == ".json"
                         and file_path_obj.parent.name == "mod"
                         and not str(file_path_obj).startswith("__MACOSX") # avoid processing internal macOS files
+                        and not str(file_path_obj).endswith(".DS_Store")
                 ):
                     print(f"Loading module {file_path_obj.stem.upper()}")
                     start = time()
