@@ -1,20 +1,11 @@
-# TODO: clean imports
 import json
 from pathlib import Path
-from time import time
 from warnings import deprecated
 from zipfile import ZipFile
-from lxml import etree
 
 from builders.module_builder import ModuleBuilder
 from models.module import Module
-from models.table import Table
 from parsers.tables_parser import TablesParser
-
-# TODO: clean constants
-MODULES_FOLDER = Path(__file__).parent / "modules"
-INDEX_PATH = MODULES_FOLDER / "index.json"
-DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
 
 
 class ModulesParser:
@@ -32,18 +23,6 @@ class ModulesParser:
         )
 
     @staticmethod
-    def tables_in_module(zip_file: ZipFile, ref_file: str) -> [str]:
-        '''
-        Searches all tables declared in mod.json
-        '''
-        tables: [str] = []
-        bin_read_mod = zip_file.read(ref_file)
-        mod_json = json.loads(bin_read_mod.decode("utf-8"))
-        for table in list(mod_json["tables"].keys()):
-            tables.append(table[1:].lower().replace("-", "."))
-        return tables
-
-    @staticmethod
     def from_json(zip_file: ZipFile, ref_file: str):
         """loads one (1) module from the given zip and reference file"""
         mod_builder = ModuleBuilder()
@@ -55,13 +34,10 @@ class ModulesParser:
         mod_builder.set_taxonomy_module_path(ref_file)
 
         tables_in_mod = ModulesParser.tables_in_module(zip_file, ref_file)
-        # print(tables_in_mod)
         for table in filter(ModulesParser.file_is_table, zip_file.namelist()):
-            # print(f"Found table {table.split('/')[-1].split('.json')[0]}")
             table_name = table.split('/')[-1].split('.json')[0]
             if (table_name in tables_in_mod
-                    and ModulesParser.file_is_table(table)):
-                # print(f"Found table {table} for mod {ref_file}")
+                    and ModulesParser.file_is_table(table)): # Could this be redundant??
                 mod_builder.add_table(TablesParser.from_json(zip_file, table, table_name))
 
         return mod_builder.build()
@@ -88,7 +64,6 @@ class ModulesParser:
                     mod_builder.set_date(file_path.split("/")[8])
                     mod_builder.set_taxonomy_module_path(file_path)
                     for table in TablesParser.old_from_json(zip_file, file_path_obj):
-                    # for table in []:
                         mod_builder.add_table(table)
                     modules.append(mod_builder.build())
         if not modules:
@@ -100,3 +75,15 @@ class ModulesParser:
                 )
             )
         return modules
+
+    @staticmethod
+    def tables_in_module(zip_file: ZipFile, ref_file: str) -> [str]:
+        '''
+        Searches all tables declared in mod.json
+        '''
+        tables: [str] = []
+        bin_read_mod = zip_file.read(ref_file)
+        mod_json = json.loads(bin_read_mod.decode("utf-8"))
+        for table in list(mod_json["tables"].keys()):
+            tables.append(table[1:].lower().replace("-", "."))
+        return tables
