@@ -1,3 +1,4 @@
+# TODO: clean imports
 import json
 from pathlib import Path
 from time import time
@@ -6,8 +7,10 @@ from lxml import etree
 
 from builders.module_builder import ModuleBuilder
 from models.module import Module
+from models.table import Table
+from parsers.tables_parser import TablesParser
 
-
+# TODO: clean constants
 MODULES_FOLDER = Path(__file__).parent / "modules"
 INDEX_PATH = MODULES_FOLDER / "index.json"
 DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
@@ -16,7 +19,7 @@ DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
 class ModulesParser:
 
     @staticmethod
-    def from_json(input_path: Path = None):
+    def from_json(input_path: Path = None) -> [Module]:
         """loads the modules in the taxonomy"""
         modules: [Module] = []
 
@@ -35,6 +38,9 @@ class ModulesParser:
                     mod_builder.set_taxonomy_code(file_path.split("/")[7])
                     mod_builder.set_date(file_path.split("/")[8])
                     mod_builder.set_taxonomy_module_path(file_path)
+                    for table in TablesParser.from_json(zip_file, file_path_obj):
+                    # for table in []:
+                        mod_builder.add_table(table)
                     modules.append(mod_builder.build())
         if not modules:
             raise TypeError(
@@ -45,4 +51,3 @@ class ModulesParser:
                 )
             )
         return modules
-    

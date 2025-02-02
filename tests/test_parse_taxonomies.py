@@ -14,6 +14,7 @@ class MyTestCase(unittest.TestCase):
         tax = TaxonomyParser.from_json(taxonomy_path)
         self.assertTrue(isinstance(tax, Taxonomy))
         self.assertEqual(1, len(tax.modules))
+        self.assertEqual(23, len(tax.modules[0].tables))
 
 
 if __name__ == '__main__':

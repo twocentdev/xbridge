@@ -6,6 +6,7 @@ Each time the EBA releases a new taxonomy, the taxonomy_loader.py
 module must be run to reflect the changes in the taxonomy.
 """
 
+# TODO: clean imports
 import argparse
 import json
 import os
@@ -23,9 +24,11 @@ from models.taxonomy import Taxonomy
 from parsers.modules_parser import ModulesParser
 from xbridge.modules import Module
 
+# TODO: clean constants
 MODULES_FOLDER = Path(__file__).parent / "modules"
 INDEX_PATH = MODULES_FOLDER / "index.json"
 DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
+
 
 class TaxonomyParser:
 
