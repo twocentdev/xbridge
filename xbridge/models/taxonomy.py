@@ -28,3 +28,8 @@ class Taxonomy:
     def get_variables_from_module(self, code):
         module = self.get_module(code)
         return module.get_variables()
+
+    def __eq__(self, other):
+        if not isinstance(other, Taxonomy):
+            return NotImplemented
+        return len(self.modules) == len(other.modules)

@@ -78,3 +78,15 @@ class Table:
 
     def __repr__(self) -> str:
         return f"<Table - {self.code}>"
+
+    def __eq__(self, other):
+        if not isinstance(other, Table):
+            return NotImplemented
+        return (
+            self.code == other.code
+            and self.url == other.url
+            and len(self.open_keys) == len(other.open_keys)
+            and len(self.attributes) == len(other.attributes)
+            and len(self.variables) == len(other.variables)
+            and self.table_zip_path == other.table_zip_path
+        )

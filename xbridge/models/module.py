@@ -106,3 +106,15 @@ class Module:
 
     def __repr__(self) -> str:
         return f"<Module - {self.code}>"
+
+    def __eq__(self, other):
+        if not isinstance(other, Module):
+            return NotImplemented
+        return (
+            self.code == other.code
+            and self.url == other.url
+            and self.taxonomy_code == other.taxonomy_code
+            and self.date == other.date
+            and self.taxonomy_module_path == other.taxonomy_module_path
+            and len(self.tables) == len(other.tables)
+        )

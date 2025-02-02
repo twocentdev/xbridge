@@ -54,3 +54,12 @@ class Variable:
 
     def __repr__(self) -> str:
         return f"<Variable - {self.code}>"
+
+    def __eq__(self, other):
+        if not isinstance(other, Variable):
+            return NotImplemented
+        return (
+            self.code == other.code
+            and self.dimensions == other.dimensions
+            and self.attributes == other.attributes
+        )
