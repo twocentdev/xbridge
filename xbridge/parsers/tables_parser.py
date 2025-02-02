@@ -1,17 +1,44 @@
 import json
 from pathlib import Path
+from warnings import deprecated
 from zipfile import ZipFile
 
 from builders.table_builder import TableBuilder
 from builders.variable_builder import VariableBuilder
 from models.table import Table
-from models.variable import Variable
+from parsers.variables_parser import VariablesParser
 
 
 class TablesParser:
 
     @staticmethod
-    def from_json(zip_file: ZipFile, input_path: Path):
+    def from_json(zip_file: ZipFile, ref_file: str, table_ref: str):
+        # print(f"About to process {table_ref} in {ref_file}")
+        bin_read_table = zip_file.read(ref_file)
+        table_json = json.loads(bin_read_table.decode("utf-8"))
+
+        tab_builder = TableBuilder()
+        table_code = list(table_json["tableTemplates"].keys())[0]
+        tab_builder.set_code(table_code)
+        tab_builder.set_url(table_ref + ".csv")
+        tab_builder.set_table_zip_path(ref_file)
+
+        for column_name in table_json["tableTemplates"][table_code].get("columns", []):
+            if column_name == "unit":
+                tab_builder.add_attribute(column_name)
+            elif column_name not in ("datapoint", "factValue"):
+                tab_builder.add_open_key(column_name)
+
+        vars_json = table_json["tableTemplates"][table_code]["columns"]["datapoint"].get("propertyGroups", [])
+        for k, v in vars_json.items():
+            # print(f"Found variable {k}")
+            tab_builder.add_variable(VariablesParser.from_json(k, v))
+
+        return tab_builder.build()
+
+    @deprecated("Use from_json instead")
+    @staticmethod
+    def old_from_json(zip_file: ZipFile, input_path: Path):
         """Extracts the :obj:`tables <xbridge.taxonomy.Table>` in the JSON files for the :obj:`modules <xbridge.taxonomy.Module>` in the taxonomy"""
         tables: [Table] = []
 
