@@ -5,30 +5,14 @@ JSON files with the conversion instructions.
 Each time the EBA releases a new taxonomy, the taxonomy_loader.py
 module must be run to reflect the changes in the taxonomy.
 """
-
-# TODO: clean imports
-import argparse
-import json
-import os
-import shutil
-import subprocess
 from pathlib import Path
-from tempfile import TemporaryDirectory
-from time import time
 from warnings import deprecated
 from zipfile import ZipFile
 
-from lxml import etree
 
 from builders.taxonomy_builder import TaxonomyBuilder
 from models.taxonomy import Taxonomy
 from parsers.modules_parser import ModulesParser
-from xbridge.modules import Module
-
-# TODO: clean constants
-MODULES_FOLDER = Path(__file__).parent / "modules"
-INDEX_PATH = MODULES_FOLDER / "index.json"
-DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
 
 
 class TaxonomyParser:
@@ -39,9 +23,17 @@ class TaxonomyParser:
         tax_builder = TaxonomyBuilder()
         with ZipFile(input_path, mode="r") as zip_file:
             for file in filter(TaxonomyParser.file_is_mod, zip_file.namelist()):
-                print(f"Found module in {file}")
                 tax_builder.add_module(ModulesParser.from_json(zip_file, file))
-        return tax_builder.build()
+        tax = tax_builder.build()
+        if not tax.modules:
+            raise TypeError(
+                (
+                    "No modules found in the taxonomy. "
+                    "Please check that the zip file does not contain "
+                    "zip files within it"
+                )
+            )
+        return tax
 
     @deprecated("Use from_json instead")
     @staticmethod

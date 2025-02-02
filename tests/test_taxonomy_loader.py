@@ -60,6 +60,15 @@ class MyTestCase(unittest.TestCase):
             index = json.load(index_json)
             self.assertTrue(ae_schema in index)
 
+    def test_load_dpm_v02_taxonomy(self):
+        # "Load" taxonomy
+        try:
+            taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "corep_dpm_2_0.zip"
+            sys.argv.append(str(taxonomy_path))
+            taxonomy_loader.main()
+        except KeyError:
+            self.fail("An unexpected error occurred")
+
 
 if __name__ == '__main__':
     unittest.main()
