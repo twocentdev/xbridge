@@ -15,6 +15,7 @@ import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from time import time
+from warnings import deprecated
 from zipfile import ZipFile
 
 from lxml import etree
@@ -36,6 +37,26 @@ class TaxonomyParser:
     def from_json(input_path: Path) -> Taxonomy:
         """Returns a Taxonomy object from a JSON taxonomy file"""
         tax_builder = TaxonomyBuilder()
-        for module in ModulesParser.from_json(input_path):
+        with ZipFile(input_path, mode="r") as zip_file:
+            for file in filter(TaxonomyParser.file_is_mod, zip_file.namelist()):
+                print(f"Found module in {file}")
+                tax_builder.add_module(ModulesParser.from_json(zip_file, file))
+        return tax_builder.build()
+
+    @deprecated("Use from_json instead")
+    @staticmethod
+    def old_from_json(input_path: Path) -> Taxonomy:
+        """Returns a Taxonomy object from a JSON taxonomy file"""
+        tax_builder = TaxonomyBuilder()
+        for module in ModulesParser.old_from_json(input_path):
             tax_builder.add_module(module)
         return tax_builder.build()
+
+    @staticmethod
+    def file_is_mod(file_path: str) -> bool:
+        return (
+            not file_path.startswith("__MACOSX")
+            and not ".DS_Store" in file_path
+            and "/mod/" in file_path
+            and file_path.endswith(".json")
+        )
