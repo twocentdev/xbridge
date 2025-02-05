@@ -10,12 +10,13 @@ INSTANCES_PATH = Path(__file__).parent / "test_files" / "instances_to_parse_stan
 
 class MyTestCase(unittest.TestCase):
 
-    def tearDown(self):
-        zip_files = [file for file in INSTANCES_PATH.iterdir() if file.name.endswith(".zip")]
+    def test_parse_instance_to_standard_csv(self):
+        # Clean files from previous executions
+        zip_files = [file for file in INSTANCES_PATH.iterdir() if
+                     file.name.endswith(".zip")]
         for zip_file in zip_files:
             os.remove(zip_file)
 
-    def test_parse_instance_to_standard_csv(self):
         self.assertTrue(INSTANCES_PATH.exists(), "Instances path does not exist")
         self.assertTrue(INSTANCES_PATH.is_dir(), "Instances path is not a dir")
 
