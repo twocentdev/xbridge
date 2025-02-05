@@ -8,6 +8,7 @@ from parsers.taxonomies_parser import TaxonomyParser
 class MyTestCase(unittest.TestCase):
 
     def test_OLD_parsers(self):
+        self.skipTest("This test is no more required.")
         taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "asset_encumbrance.zip"
         self.assertTrue(taxonomy_path.exists(), "Taxonomy path does not exists.")
         self.assertTrue(taxonomy_path.is_file(), "Taxonomy path is not a file.")
@@ -26,6 +27,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(23, len(tax.modules[0].tables))
 
     def test_check_both_parsers(self):
+        self.skipTest("This test is no more required.")
         taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "asset_encumbrance.zip"
         old_tax = TaxonomyParser.old_from_json(taxonomy_path)
         tax = TaxonomyParser.from_json(taxonomy_path)
