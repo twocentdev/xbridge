@@ -1,23 +1,40 @@
 from pathlib import Path
 
+from parsers.dim_dom_map_parser import DimDomMapParser
 from parsers.taxonomies_parser import TaxonomyParser
-
-MODULES_FOLDER = Path(__file__).parent / "modules"
-INDEX_PATH = MODULES_FOLDER / "index.json"
-DIM_DOM_MAPPING_PATH = MODULES_FOLDER / "dim_dom_mapping.json"
+from serializers.dim_dom_map_serializer import DimDomMapSerializer
+from serializers.module_serializer import ModuleSerializer
+from serializers.modules_index_serializer import ModulesIndexSerializer
 
 
 class TaxonomyLoaderServiceHandler:
 
     @staticmethod
-    def load(input_path: str | Path) -> None:
-        input_path = input_path if isinstance(input_path, Path) else Path(input_path)
+    def load(tax_path: str | Path, modules_path: str | Path) -> None:
+        tax_path = tax_path if isinstance(tax_path, Path) \
+            else Path(tax_path)
+        modules_path = modules_path if isinstance(modules_path, Path) \
+            else Path(modules_path)
         # file exists?
-        if not input_path.exists():
-            raise FileNotFoundError(f"File {input_path} not found")
+        if not tax_path.exists():
+            raise FileNotFoundError(f"File {tax_path} not found")
         # file is compress??
-        if input_path.suffix not in [".zip", ".7z"]:
+        if tax_path.suffix not in [".zip", ".7z"]:
             raise ValueError("Input file must be a zip or 7z file")
-        # parse tax
-        TaxonomyParser.from_json(input_path)
-        # serialize to file
+        # parse file(s)
+        tax = TaxonomyParser.from_json(tax_path)
+        dim_dom_map = DimDomMapParser.from_json(tax_path)
+        # serialize model to file(s)
+        DimDomMapSerializer.to_json(
+            modules_path,
+            dim_dom_map
+        )
+        ModulesIndexSerializer.to_json(
+            modules_path,
+            tax.get_modules_index()
+        )
+        for module in tax.modules:
+            ModuleSerializer.to_json(
+                modules_path,
+                module
+            )
