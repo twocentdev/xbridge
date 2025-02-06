@@ -37,7 +37,7 @@ class MyTestCase(unittest.TestCase):
                         "Given taxonomy is not a file"
                         )
         self.assertFalse(modules_dir.exists(), "This dir should not exist")
-        TaxonomyLoaderServiceHandler.load(taxonomy_path, modules_dir)
+        TaxonomyLoaderServiceHandler.load_dpm_1_0(taxonomy_path, modules_dir)
         self.assertTrue(modules_dir.exists())
         self.assertTrue((modules_dir / "index.json").exists())
         self.assertTrue((modules_dir / "ae_2022-03-01.json").exists())
