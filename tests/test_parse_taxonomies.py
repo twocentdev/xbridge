@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 
 from models.taxonomy import Taxonomy
-from parsers.taxonomies_parser import TaxonomyParser
+# from parsers.taxonomies_parser import TaxonomyParser
 
 
 class MyTestCase(unittest.TestCase):

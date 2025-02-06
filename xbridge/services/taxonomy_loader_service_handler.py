@@ -1,14 +1,10 @@
 from pathlib import Path
 from zipfile import ZipFile
 
-from pandas.plotting import table
-
-from builders.module_builder import ModuleBuilder
 from builders.taxonomy_builder import TaxonomyBuilder
 from parsers.dim_dom_map_parser import DimDomMapParser
 from parsers.modules_parser import ModulesParser
 from parsers.tables_parser import TablesParser
-from parsers.taxonomies_parser import TaxonomyParser
 from serializers.dim_dom_map_serializer import DimDomMapSerializer
 from serializers.module_serializer import ModuleSerializer
 from serializers.modules_index_serializer import ModulesIndexSerializer
@@ -43,7 +39,6 @@ class TaxonomyLoaderServiceHandler:
                     table_builder = TablesParser.from_json(zip_file, table_file, table_file)
                     module_builder.add_table(table_builder.build())
 
-        # tax = TaxonomyParser.from_json(tax_path)
         tax = tax_builder.build()
         dim_dom_map = DimDomMapParser.from_json(tax_path)
         # serialize model to file(s)

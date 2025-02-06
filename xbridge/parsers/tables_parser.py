@@ -1,11 +1,7 @@
 import json
-from pathlib import Path
-# from warnings import deprecated
 from zipfile import ZipFile
 
 from builders.table_builder import TableBuilder
-from builders.variable_builder import VariableBuilder
-from models.table import Table
 from parsers.variables_parser import VariablesParser
 
 
@@ -44,56 +40,4 @@ class TablesParser:
         for k, v in vars_json.items():
             tab_builder.add_variable(VariablesParser.from_json(k, v))
 
-        # return tab_builder.build()
         return tab_builder
-
-    # @deprecated("Use from_json instead")
-    #@staticmethod
-    #def old_from_json(zip_file: ZipFile, input_path: Path):
-    #    """Extracts the :obj:`tables <xbridge.taxonomy.Table>` in the JSON files for the :obj:`modules <xbridge.taxonomy.Module>` in the taxonomy"""
-    #    tables: [Table] = []
-    #
-    #    bin_read_mod = zip_file.read(str(input_path))
-    #    info = json.loads(bin_read_mod.decode("utf-8"))
-    #
-    #    for table_code, table in info["tables"].items():
-    #        if table_code[1:] in ("FI", "FootNotes"):
-    #            continue
-    #
-    #        table_url = table["url"]
-    #        table_folder_name = table_code[1:].lower().replace("-", ".")
-    #
-    #        path = str(input_path).split("/mod/")[0]
-    #
-    #        table_path = (
-    #            path + "/tab/" + table_folder_name + "/" + table_folder_name + ".json"
-    #        )
-    #        tab_builder = TableBuilder()
-    #        tab_builder.set_code(table_code[1:])
-    #        tab_builder.set_url(table_url)
-    #        tab_builder.set_table_zip_path(table_path)
-    #
-    #        bin_read_table = zip_file.read(table_path)
-    #
-    #        table_json = json.loads(bin_read_table.decode("utf-8"))
-    #        table_template = table_json["tableTemplates"][table_code[1:]]
-    #        for column_name in table_template.get("columns", []):
-    #            if column_name == "unit":
-    #                tab_builder.add_attribute(column_name)
-    #            elif column_name not in ("datapoint", "factValue"):
-    #                tab_builder.add_open_key(column_name)
-    #
-    #        if table_code[1:] in table_json["tableTemplates"]:
-    #            variables_dict = table_json["tableTemplates"][table_code[1:]]["columns"][
-    #                "datapoint"
-    #            ]["propertyGroups"]
-    #            for elto_k, elto_v in variables_dict.items():
-    #                var_builder = VariableBuilder()
-    #                var_builder.set_code(elto_k)
-    #                var_builder.set_dimensions(elto_v["dimensions"])
-    #                if "decimals" in elto_v:
-    #                    var_builder.set_attributes(elto_v["decimals"])
-    #                tab_builder.add_variable(var_builder.build())
-    #
-    #        tables.append(tab_builder.build())
-    #    return tables
