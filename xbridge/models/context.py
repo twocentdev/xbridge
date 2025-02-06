@@ -26,3 +26,17 @@ class Context:
     @property
     def scenario(self):
         return self.__scenario
+
+    def __repr__(self) -> str:
+        return (
+            f"Context(id={self.id}, entity={self.entity}, "
+            f"period={self.period}, scenario={self.scenario})"
+        )
+
+    def __dict__(self):
+        result = {"entity": self.entity, "period": self.period}
+
+        for key, value in self.scenario.dimensions.items():
+            result[key] = value
+
+        return result

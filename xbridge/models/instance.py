@@ -65,7 +65,7 @@ class Instance:
 
     @property
     def module_code(self):
-        self.__module_code
+        return self.__module_code
 
     @property
     def module_ref(self):
@@ -121,5 +121,3 @@ class Instance:
 
     def get_fact_list_dict(self) -> dict:
         pass
-
-

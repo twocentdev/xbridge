@@ -8,6 +8,7 @@ from models.fact import Fact
 from models.instance import Instance
 from parsers.context_parser import ContextParser
 from parsers.fact_parser import FactParser
+from parsers.filing_indicators_parser import FilingIndicatorsParser
 
 
 class InstanceParser:
@@ -85,8 +86,8 @@ class InstanceParser:
                 )
             ]
             if child.prefix == facts_prefixes:
-                fact: Fact = FactParser(child)
-                instance: Instance = instance_builder.build()
+                fact: Fact = FactParser.from_xml(child)
+                instance: Instance = instance_builder.build() # TODO: do not do this
                 if fact.unit == instance.base_currency_unit:
                     instance_builder.add_decimals_monetary_set(fact.decimals)
                 if fact.unit == instance.pure_unit:
@@ -107,10 +108,8 @@ class InstanceParser:
             if child.prefix == "link":
                 ref = child.attrib["{http://www.w3.org/1999/xlink}href"]
                 instance_builder.set_module_ref(ref)
-                # self._module_ref = value
                 code = ref.split("/mod/")[1].split(".xsd")[0]
                 instance_builder.set_module_code(code)
-                # self._module_code = value
                 break
         return instance_builder
 
@@ -121,11 +120,17 @@ class InstanceParser:
         for fil_ind in root_elem\
                 .find("{http://www.eurofiling.info/xbrl/ext/filing-indicators}fIndicators")\
                 .findall("{http://www.eurofiling.info/xbrl/ext/filing-indicators}filingIndicator"):
-            filing_indicators.append(FilingIndicator(fil_ind))
+            filing_indicators.append(FilingIndicatorsParser.from_xml(fil_ind))
+            # filing_indicators.append(FilingIndicator(fil_ind))
 
-        self._filing_indicators = filing_indicators
+        instance_builder.set_filing_indicators(filing_indicators)
+        # self._filing_indicators = filing_indicators
         first_fil_ind = filing_indicators[0]
-        fil_ind_context = self.contexts[first_fil_ind.context]
-        self._entity = fil_ind_context.entity
-        self._period = fil_ind_context.period
+        instance: Instance = instance_builder.build() # TODO: do not do this
+        fil_ind_context = instance.contexts[first_fil_ind.context]
+        # fil_ind_context = self.contexts[first_fil_ind.context]
+        instance_builder.set_entity(fil_ind_context.entity)
+        # self._entity = fil_ind_context.entity
+        instance_builder.set_period(fil_ind_context.period)
+        # self._period = fil_ind_context.period
         return instance_builder
