@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from warnings import deprecated
+# from warnings import deprecated
 from zipfile import ZipFile
 
 from builders.module_builder import ModuleBuilder
@@ -42,7 +42,7 @@ class ModulesParser:
 
         return mod_builder.build()
 
-    @deprecated("Use from_json instead")
+    # @deprecated("Use from_json instead")
     @staticmethod
     def old_from_json(input_path: Path = None) -> [Module]:
         """loads the modules in the taxonomy"""

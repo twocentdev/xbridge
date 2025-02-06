@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from warnings import deprecated
+# from warnings import deprecated
 from zipfile import ZipFile
 
 from builders.table_builder import TableBuilder
@@ -34,7 +34,7 @@ class TablesParser:
 
         return tab_builder.build()
 
-    @deprecated("Use from_json instead")
+    # @deprecated("Use from_json instead")
     @staticmethod
     def old_from_json(zip_file: ZipFile, input_path: Path):
         """Extracts the :obj:`tables <xbridge.taxonomy.Table>` in the JSON files for the :obj:`modules <xbridge.taxonomy.Module>` in the taxonomy"""

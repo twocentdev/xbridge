@@ -8,7 +8,5 @@ class VariablesParser:
     def from_json(var_key: str, var_json: {}) -> Variable:
         var_builder = VariableBuilder()
         var_builder.set_code(var_key)
-        var_builder.set_dimensions(var_json["dimensions"])
-        if "decimals" in var_json:
-            var_builder.set_attributes(var_json["decimals"])
+        var_builder.set_datapoint_dict(var_json)
         return var_builder.build()

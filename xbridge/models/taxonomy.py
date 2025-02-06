@@ -1,6 +1,4 @@
 from models.module import Module
-from models.table import Table
-from models.variable import Variable
 
 
 class Taxonomy:
@@ -28,6 +26,14 @@ class Taxonomy:
     def get_variables_from_module(self, code):
         module = self.get_module(code)
         return module.get_variables()
+
+    def get_modules_index(self):
+        index = {}
+        for module in self.modules:
+            index_url = f"http://{module.url[:-4]}xsd"
+            index_file_ref = f"{module.code}_{module.date}.json"
+            index[index_url] = index_file_ref
+        return index
 
     def __eq__(self, other):
         if not isinstance(other, Taxonomy):

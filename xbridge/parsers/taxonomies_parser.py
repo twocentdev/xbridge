@@ -6,7 +6,7 @@ Each time the EBA releases a new taxonomy, the taxonomy_loader.py
 module must be run to reflect the changes in the taxonomy.
 """
 from pathlib import Path
-from warnings import deprecated
+# from warnings import deprecated
 from zipfile import ZipFile
 
 
@@ -35,7 +35,7 @@ class TaxonomyParser:
             )
         return tax
 
-    @deprecated("Use from_json instead")
+    # @deprecated("Use from_json instead")
     @staticmethod
     def old_from_json(input_path: Path) -> Taxonomy:
         """Returns a Taxonomy object from a JSON taxonomy file"""

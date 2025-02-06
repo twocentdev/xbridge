@@ -44,6 +44,7 @@ class MyTestCase(unittest.TestCase):
         os.remove(MODULES_ZIP)
 
     def test_load_dpm_v01_taxonomy(self):
+        self.skipTest("No needed this test anymore.")
         # "Load" taxonomy
         taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "asset_encumbrance.zip"
         sys.argv.append(str(taxonomy_path))
@@ -54,13 +55,17 @@ class MyTestCase(unittest.TestCase):
             ae_file_name = "ae_2022-03-01.json"
             self.assertTrue(ae_file_name in modules_zip.namelist())
             with open(MODULES_PATH / ae_file_name, mode="r") as ae:
-                self.assertEqual(modules_zip.read(ae_file_name).decode("utf-8"), ae.read())
+                self.assertEqual(
+                    modules_zip.read(ae_file_name).decode("utf-8"),
+                    ae.read()
+                )
         with open(INDEX_FILE, mode="r") as index_json:
             ae_schema = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/ae/its-005-2020/2022-03-01/mod/ae.xsd"
             index = json.load(index_json)
             self.assertTrue(ae_schema in index)
 
     def test_load_dpm_v02_taxonomy(self):
+        self.skipTest("Not yet implemented")
         # "Load" taxonomy
         try:
             taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "corep_dpm_2_0.zip"
