@@ -42,6 +42,27 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue((modules_dir / "index.json").exists())
         self.assertTrue((modules_dir / "ae_2022-03-01.json").exists())
 
+    def test_taxonomy_loader_dora(self):
+        # clean files from previous executions
+        taxonomy_path: Path = Path(__file__).parent / "test_files" / \
+                        "taxonomies_to_load" / "dora.zip"
+        modules_dir: Path = taxonomy_path.parent / "modules"
+
+        if modules_dir.exists():
+            for file in os.listdir(modules_dir):
+                os.remove(modules_dir / file)
+            os.removedirs(modules_dir)
+
+        self.assertTrue(taxonomy_path.exists(), "Taxonomy not found")
+        self.assertTrue(taxonomy_path.is_file(),
+                        "Given taxonomy is not a file"
+                        )
+        self.assertFalse(modules_dir.exists(), "This dir should not exist")
+        TaxonomyLoaderServiceHandler.load_dora(taxonomy_path, modules_dir)
+        self.assertTrue(modules_dir.exists())
+        self.assertTrue((modules_dir / "index.json").exists())
+        self.assertTrue((modules_dir / "ae_2022-03-01.json").exists())
+
     def test_instance_loader_dpm_1_0(self):
         instance_path = Path(__file__).parent / "test_files" / \
                         "instances_to_parse_standard" / \
