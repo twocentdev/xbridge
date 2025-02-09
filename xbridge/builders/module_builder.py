@@ -31,6 +31,10 @@ class ModuleBuilder:
         self.__taxonomy_module_path = taxonomy_module_path
 
     def build(self) -> Module:
+        if self.__date == "mod":
+            self.set_date(self.__taxonomy_code.replace(".", "_"))
+        else:
+            self.set_date(self.__date.replace("-", "_"))
         mod = Module(self.__code, self.__url, self.__taxonomy_code, self.__date, self.__tables)
         mod.taxonomy_module_path = self.__taxonomy_module_path
         return mod
