@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -24,17 +25,23 @@ class ModulesParser:
         file_path = Path(ref_file)
         mod_builder.set_code(file_path.stem)
         mod_builder.set_url(ref_file)
+        # tax_code = ref_file.split("/")[7]
         mod_builder.set_taxonomy_code(ref_file.split("/")[7])
+        # date = ref_file.split("/")[8]
         mod_builder.set_date(ref_file.split("/")[8])
+        # if date != "mod":
+        #     mod_builder.set_date(date)
+        # else:
+        #     mod_builder.set_date(tax_code.replace(".", "_"))
         mod_builder.set_taxonomy_module_path(ref_file)
 
         return mod_builder
 
     @staticmethod
     def tables_in_module(zip_file: ZipFile, ref_file: str) -> [str]:
-        '''
+        """
         Searches all tables declared in mod.json
-        '''
+        """
         tables: [str] = []
         bin_read_mod = zip_file.read(ref_file)
         mod_json = json.loads(bin_read_mod.decode("utf-8"))

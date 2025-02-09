@@ -22,7 +22,8 @@ class VariableBuilder:
         self.__datapoint_dict = datapoint_dict
 
     def __extract_dimensions(self):
-        self.__dimensions = self.__datapoint_dict["dimensions"]
+        if "dimensions" in self.__datapoint_dict.keys():
+            self.__dimensions = self.__datapoint_dict["dimensions"]
         if "decimals" in self.__datapoint_dict:
             self.__attributes = self.__datapoint_dict["decimals"]
 

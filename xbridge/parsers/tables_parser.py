@@ -30,13 +30,19 @@ class TablesParser:
         tab_builder.set_url(table_ref + ".csv")
         tab_builder.set_table_zip_path(ref_file)
 
+
         for column_name in table_json["tableTemplates"][table_code].get("columns", []):
             if column_name == "unit":
                 tab_builder.add_attribute(column_name)
             elif column_name not in ("datapoint", "factValue"):
                 tab_builder.add_open_key(column_name)
 
-        vars_json = table_json["tableTemplates"][table_code]["columns"]["datapoint"].get("propertyGroups", [])
+        vars_json = {}
+        if "datapoint" in table_json["tableTemplates"][table_code]["columns"].keys(): # Check this for DPM 2.0
+            vars_json = table_json["tableTemplates"][table_code]["columns"]["datapoint"].get("propertyGroups", [])
+        else:
+            vars_json = table_json["tableTemplates"][table_code].get("columns", [])
+        # vars_json = table_json["tableTemplates"][table_code]["columns"]["datapoint"].get("propertyGroups", [])
         for k, v in vars_json.items():
             tab_builder.add_variable(VariablesParser.from_json(k, v))
 
