@@ -27,6 +27,17 @@ class VariableBuilder:
         if "decimals" in self.__datapoint_dict:
             self.__attributes = self.__datapoint_dict["decimals"]
 
+    def from_json(self, json):
+        self.set_code(json["code"])
+        processed_dimensions = {}
+        for k, v in json["dimensions"].items():
+            if ":" in k:
+                processed_dimensions[k.split(":")[1]] = v
+            else:
+                processed_dimensions[k] = v
+        self.set_dimensions(processed_dimensions)
+        self.set_attributes(json["attributes"])
+
     def build(self):
         self.__extract_dimensions()
         return Variable(self.__code, self.__dimensions, self.__attributes)

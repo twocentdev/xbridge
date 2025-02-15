@@ -14,7 +14,7 @@ from parsers.filing_indicators_parser import FilingIndicatorsParser
 class InstanceParser:
 
     @staticmethod
-    def from_xml(input_path: Path):
+    def from_xml(input_path: Path) -> InstanceBuilder:
         root_elem = etree.parse(input_path).getroot()
         builder = InstanceBuilder()
         builder = InstanceParser.__get_units(root_elem, builder)
@@ -23,7 +23,7 @@ class InstanceParser:
         builder = InstanceParser.__get_module_code(root_elem, builder)
         builder = InstanceParser.__get_filing_indicators(root_elem, builder)
         # What more??
-        return builder.build()
+        return builder
 
     @staticmethod
     def __get_units(root_elem, instance_builder: InstanceBuilder) -> \

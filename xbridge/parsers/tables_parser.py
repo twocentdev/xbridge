@@ -31,7 +31,8 @@ class TablesParser:
         tab_builder.set_table_zip_path(ref_file)
 
 
-        for column_name in table_json["tableTemplates"][table_code].get("columns", []):
+        for column_name in table_json["tableTemplates"][table_code]\
+                .get("columns", []):
             if column_name == "unit":
                 tab_builder.add_attribute(column_name)
             elif column_name not in ("datapoint", "factValue"):

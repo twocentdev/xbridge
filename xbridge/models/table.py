@@ -21,14 +21,21 @@ class Table:
     :param input_zip_path: Path to the file used as table.
     """
 
-    def __init__(self, code=None, url=None, open_keys=None, variables=None, attributes=None, input_zip_path=None,):
+    def __init__(self,
+                 code=None,
+                 url=None,
+                 open_keys=None,
+                 variables=None,
+                 attributes=None,
+                 input_zip_path=None,
+                 variables_df=None):
         self.table_zip_path = input_zip_path # TODO: May fall from here. To builders?
         self.__code = code
         self.__url = url
         self.__open_keys = open_keys if open_keys is not None else []
         self.__variables = variables if variables is not None else []
         self.__attributes = attributes if attributes is not None else []
-        self.__datapoint_df = None
+        self.__datapoint_df = variables_df
 
     @property
     def code(self):
@@ -62,6 +69,8 @@ class Table:
         """
         Returns the columns for the :obj:`variable <xbridge.taxonomy.Variable>` dataframe
         """
+        if self.variable_df is None:
+            return []
         columns = set(self.variable_df.columns)
         columns.remove("datapoint")
         return columns

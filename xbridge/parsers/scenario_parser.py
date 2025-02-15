@@ -25,4 +25,4 @@ class ScenarioParser:
                 value = value.split(":")[1] if ":" in value else value
                 # self.dimensions[dimension] = value
                 builder.set_dimension(dimension, value)
-                return builder.build()
+        return builder.build()

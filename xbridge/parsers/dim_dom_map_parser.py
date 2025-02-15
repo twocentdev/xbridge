@@ -43,6 +43,13 @@ class DimDomMapParser:
             return map_builder.build()
 
     @staticmethod
+    def from_serialized(map_json: dict) -> DimDomMapBuilder:
+        map_builder = DimDomMapBuilder()
+        for dim, dom in map_json.items():
+            map_builder.add_dom_for_dim(dim, dom)
+        return map_builder
+
+    @staticmethod
     def is_dim_def(file_path: str):
         return (
                 not file_path.startswith("__MACOSX")
