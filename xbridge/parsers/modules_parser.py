@@ -22,20 +22,24 @@ class ModulesParser:
 
     @staticmethod
     def from_json(zip_file: ZipFile, ref_file: str) -> ModuleBuilder:
-        """loads one (1) module from the given zip and reference file"""
+        """
+        Reads file and creates a module builder
+        """
         mod_builder = ModuleBuilder()
         file_path = Path(ref_file)
         mod_builder.set_code(file_path.stem)
         mod_builder.set_url(ref_file)
-        # tax_code = ref_file.split("/")[7]
-        mod_builder.set_taxonomy_code(ref_file.split("/")[7])
-        # date = ref_file.split("/")[8]
-        mod_builder.set_date(ref_file.split("/")[8])
-        # if date != "mod":
-        #     mod_builder.set_date(date)
-        # else:
-        #     mod_builder.set_date(tax_code.replace(".", "_"))
-        mod_builder.set_taxonomy_module_path(ref_file)
+        url_split = ref_file.split("/")
+        if len(url_split) == 10:  # Architecture 2.0
+            mod_builder.set_taxonomy_architecture("2.0")
+            mod_builder.set_framework_code(url_split[6])
+            mod_builder.set_framework_version(url_split[7])
+        elif len(url_split) == 11:  # Architecture 1.0
+            mod_builder.set_taxonomy_architecture("1.0")
+            mod_builder.set_framework_code(url_split[7])
+            mod_builder.set_framework_version(url_split[8])
+        else:
+            raise ValueError(f"Invalid taxonomy architecture: {len(url_split)}")
 
         return mod_builder
 
