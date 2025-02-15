@@ -7,10 +7,10 @@ class ModuleBuilder:
     def __init__(self):
         self.__code: str = ""
         self.__url: str = ""
-        self.__taxonomy_code: str = ""
-        self.__date: str = ""
+        self.__taxonomy_architecture = ""
+        self.__framework_code = ""
+        self.__framework_version = ""
         self.__tables: [Table] = []
-        self.__taxonomy_module_path: str = ""
 
     def set_code(self, code: str):
         self.__code = code
@@ -18,34 +18,28 @@ class ModuleBuilder:
     def set_url(self, url: str):
         self.__url = url
 
-    def set_taxonomy_code(self, taxonomy_code: str):
-        self.__taxonomy_code = taxonomy_code
+    def set_taxonomy_architecture(self, taxonomy_architecture):
+        self.__taxonomy_architecture = taxonomy_architecture
 
-    def set_date(self, date: str):
-        self.__date = date
+    def set_framework_code(self, framework_code):
+        self.__framework_code = framework_code
+
+    def set_framework_version(self, framework_version):
+        self.__framework_version = framework_version
 
     def add_table(self, table: Table):
         self.__tables.append(table)
 
-    def set_taxonomy_module_path(self, taxonomy_module_path: str):
-        self.__taxonomy_module_path = taxonomy_module_path
-
     def from_json(self, json: dict):
+        # TODO: read mapping from json
         self.set_code(json["code"])
         self.set_url(json["url"])
-        self.set_taxonomy_code(json["taxonomy_code"])
-        self.set_date(json["date"])
-        self.set_taxonomy_module_path(json["url"])
 
     def build(self) -> Module:
-        if self.__date == "mod":
-            self.set_date(self.__taxonomy_code.replace(".", "_"))
-        # else:
-        #     self.set_date(self.__date.replace("-", "_"))
         mod = Module(self.__code,
                      self.__url,
-                     self.__taxonomy_code,
-                     self.__date,
-                     self.__tables)
-        mod.taxonomy_module_path = self.__taxonomy_module_path
+                     self.__tables,
+                     self.__taxonomy_architecture,
+                     self.__framework_code,
+                     self.__framework_version)
         return mod

@@ -9,16 +9,19 @@ from models.variable import Variable
 class TableBuilder:
 
     def __init__(self):
-        self.__table_zip_path: str = ""  # TODO: May fall from here. To builders?
-        self.__code: str = ""
-        self.__url: str = ""
-        self.__open_keys: list = []
-        self.__variables: [Variable] = []
-        self.__attributes: list = []
-        self.__datapoint_df = None
+        self.__table_zip_path = None
+        self.__code = None
+        self.__url = None
+        self.__open_keys = []
+        self.__variables = []
+        self.__attributes = None
+        self.__input_zip_path = None
+        self.__architecture = None
+        self.__columns = []
+        self.__open_keys_mapping = {}
 
-    def set_table_zip_path(self, zip_path: str):
-        self.__table_zip_path = zip_path
+    def set_table_zip_path(self, path):
+        self.__table_zip_path = path
 
     def set_code(self, code: str):
         self.__code = code
@@ -26,27 +29,30 @@ class TableBuilder:
     def set_url(self, url: str):
         self.__url = url
 
-    def add_open_key(self, key):
-        self.__open_keys.append(key)
-
-    def add_variable(self, variable: Variable):
-        self.__variables.append(variable)
+    def set_architecture(self, architecture):
+        self.__architecture = architecture
 
     def add_attribute(self, attribute):
         self.__attributes.append(attribute)
 
-    def set_datapoint_df(self, df):
-        self.__datapoint_df = df
+    def add_column(self, column):
+        self.__columns.append(column)
 
-    def from_json(self, json: dict):
-        self.set_code(json["code"])
-        self.set_url(json["url"])
-        # open keys
-        for open_key in json.pop("open_keys"):
-            self.add_open_key(open_key)
-        # attributes
-        for attribute in json.pop("attributes"):
-            self.add_attribute(attribute)
+    def add_variable(self, variable: Variable):
+        self.__variables.append(variable)
+
+    def create_open_keys(self, table_template):
+        if self.__architecture == 'datapoints':
+            for column_name in table_template.get("columns", []):
+                if column_name == "unit":
+                    self.__attributes.append(column_name)
+                elif column_name not in ("datapoint", "factValue"):
+                    self.__open_keys.append(column_name)
+        elif self.__architecture == 'headers':
+            for dim_id, column_ref in table_template["dimensions"].items():
+                dim_code = dim_id.split(":")[1]
+                self.__open_keys.append(dim_code)
+                self.__open_keys_mapping[dim_code] = column_ref[2:]
 
     def __create_variable_df(self):
         variables = []
@@ -71,5 +77,16 @@ class TableBuilder:
                      self.__open_keys,
                      self.__variables,
                      self.__attributes,
-                     self.__table_zip_path,
-                     self.__datapoint_df)
+                     self.__architecture,
+                     self.__columns,
+                     self.__open_keys_mapping)
+
+    def from_json(self, json: dict):
+        self.set_code(json["code"])
+        self.set_url(json["url"])
+        # open keys
+        for open_key in json.pop("open_keys"):
+            self.add_open_key(open_key)
+        # attributes
+        for attribute in json.pop("attributes"):
+            self.add_attribute(attribute)

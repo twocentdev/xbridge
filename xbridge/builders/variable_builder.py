@@ -5,8 +5,8 @@ class VariableBuilder:
 
     def __init__(self):
         self.__code: str = ""
-        self.__dimensions = None
-        self.__attributes = None
+        self.__dimensions = {}
+        self.__attributes = {}
         self.__datapoint_dict = {}
 
     def set_code(self, code: str):

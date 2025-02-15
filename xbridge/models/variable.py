@@ -12,7 +12,12 @@ class Variable:
 
     """
 
-    def __init__(self, code: str=None, dimensions=None, attributes=None):
+    def __init__(self,
+                 code: str="",
+                 dimensions= {},
+                 attributes= {}):
+        if dimensions is None:
+            dimensions = {}
         self.__code: str = code
         self.__dimensions = dimensions
         self.__attributes = attributes
@@ -37,12 +42,6 @@ class Variable:
     @attributes.setter
     def attributes(self, value):
         self.__attributes = value
-
-    def extract_dimensions(self, datapoint_dict): # TODO: may fall from here. To builders?
-        """Extracts the `dimensions <https://www.xbrl.org/guidance/xbrl-glossary/#:~:text=a%20taxonomy.-,Dimension,-A%20qualifying%20characteristic>`_ for the variable"""
-        self.dimensions = datapoint_dict["dimensions"]
-        if "decimals" in datapoint_dict:
-            self.attributes = datapoint_dict["decimals"]
 
     def to_dict(self):
         """Returns a dictionary with the attributes"""
