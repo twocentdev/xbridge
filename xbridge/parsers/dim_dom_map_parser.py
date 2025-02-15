@@ -7,7 +7,6 @@ from builders.dim_dom_map_builder import DimDomMapBuilder
 
 
 class DimDomMapParser:
-    __DIM_DOM_MAP_FILE = "www.eba.europa.eu\\eu\\fr\\xbrl\\crr\\dict\\dim\\dim-def.xml"
 
     @staticmethod
     def from_json(input_path: Path):

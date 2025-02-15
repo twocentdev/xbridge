@@ -31,7 +31,7 @@ class Taxonomy:
         index = {}
         for module in self.modules:
             index_url = f"http://{module.url[:-4]}xsd"
-            index_file_ref = f"{module.code}_{module.date}.json"
+            index_file_ref = module.file_name
             index[index_url] = index_file_ref
         return index
 

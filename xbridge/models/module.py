@@ -56,7 +56,11 @@ class Module:
 
     @property
     def framework_version(self):
-        return self.framework_version
+        return self.__framework_version
+
+    @property
+    def file_name(self):
+        return f"{self.code}_{self.framework_code}_{self.framework_version}.json"
 
     @property
     def variables_location(self):
@@ -102,7 +106,8 @@ class Module:
         return {
             "code": self.code,
             "url": self.url,
-            "tables": [tab.to_dict() for tab in self.tables],
+            "architecture": self.taxonomy_architecture,
+            "tables": [tab.to_dict() for tab in self.tables]
         }
 
     def __repr__(self) -> str:
