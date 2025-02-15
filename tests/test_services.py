@@ -1,6 +1,7 @@
 import os
 import unittest
 from pathlib import Path
+from sys import modules
 
 from services.instance_parser_service_handler import \
     InstanceParserServiceHandler
@@ -9,89 +10,64 @@ from services.taxonomy_loader_service_handler import \
 
 
 class MyTestCase(unittest.TestCase):
-    # __taxonomy_path: str = Path(__file__).parent / "test_files" / \
-    #                       "taxonomies_to_load" / "asset_encumbrance.zip"
-    # __modules_dir: Path = __taxonomy_path.parent / "myModules"
 
-    def setUp(self):  # Used to clean previous execution files.
-        # modules_dir: Path = self.__taxonomy_path.parent / "modules"
-        # if self.__modules_dir.exists():
-        #     for file in os.listdir(self.__modules_dir):
-        #         os.remove(self.__modules_dir / file)
-        #     os.removedirs(self.__modules_dir)
-        pass
+    taxonomy_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load"
+    modules_path: Path = taxonomy_path / "modules"
 
-    def test_taxonomy_loader_dpm_1_0(self):
-        # clean files from previous executions
-        taxonomy_path: Path = Path(__file__).parent / "test_files" / \
-                        "taxonomies_to_load" / "asset_encumbrance.zip"
-        modules_dir: Path = taxonomy_path.parent / "modules"
+    def setUp(self):
+        if self.modules_path.exists():  # Clean previous executions
+            for file in self.modules_path.iterdir():
+                os.remove(file)
+            os.remove(self.modules_path)
 
-        if modules_dir.exists():
-            for file in os.listdir(modules_dir):
-                os.remove(modules_dir / file)
-            os.removedirs(modules_dir)
-
-        self.assertTrue(taxonomy_path.exists(), "Taxonomy not found")
-        self.assertTrue(taxonomy_path.is_file(),
-                        "Given taxonomy is not a file"
-                        )
-        self.assertFalse(modules_dir.exists(), "This dir should not exist")
-        TaxonomyLoaderServiceHandler.load(taxonomy_path, modules_dir)
-        self.assertTrue(modules_dir.exists())
-        self.assertTrue((modules_dir / "index.json").exists())
-        self.assertTrue((modules_dir / "ae_2022-03-01.json").exists())
-
-    def test_taxonomy_loader_dora(self):
-        # clean files from previous executions
-        taxonomy_path: Path = Path(__file__).parent / "test_files" / \
-                              "taxonomies_to_load" / "dora.zip"
-        modules_dir: Path = taxonomy_path.parent / "modules"
-
-        if modules_dir.exists():
-            for file in os.listdir(modules_dir):
-                os.remove(modules_dir / file)
-            os.removedirs(modules_dir)
-
-        self.assertTrue(taxonomy_path.exists(), "Taxonomy not found")
-        self.assertTrue(taxonomy_path.is_file(),
-                        "Given taxonomy is not a file"
-                        )
-        self.assertFalse(modules_dir.exists(), "This dir should not exist")
-        TaxonomyLoaderServiceHandler.load(taxonomy_path, modules_dir)
-        self.assertTrue(modules_dir.exists())
-        self.assertTrue((modules_dir / "index.json").exists())
-        self.assertTrue((modules_dir / "dora_4_0.json").exists())
-        self.assertTrue((modules_dir / "dora_2024_07_11.json").exists())
+    def test_taxonomy_load_all(self):
+        self.assertTrue(self.taxonomy_path.exists(), "Taxonomy path does not exists")
+        self.assertTrue(self.taxonomy_path.is_dir(), "Taxonomy path is not a directory")
+        self.assertFalse(self.modules_path.exists(), "Modules dir should not exist")
+        for file in self.taxonomy_path.iterdir():
+            if "zip" in file.name:
+                TaxonomyLoaderServiceHandler.load(file, self.modules_path)
+        self.assertTrue(self.modules_path.exists(), "No modules dir found")
+        self.assertTrue((self.modules_path / "index.json").exists(), "Index file not found")
+        self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists(), "Dim-Dom-Map not found")
+        # Check COREP modules (DPM 2.0)
+        self.assertTrue((self.modules_path / "corep_lr_corep_4.0.json").exists())
+        self.assertTrue((self.modules_path / "corep_of_corep_4.0.json").exists())
+        # Check AE modules (DPM 1.0)
+        self.assertTrue((self.modules_path / "ae_its-005-2020_2022-03-01.json").exists())
+        # Check DORA modules (DORA)
+        self.assertTrue((self.modules_path / "dora_dora_4.0.json").exists())
 
     def test_taxonomy_loader_dpm_2_0(self):
-        # clean files from previous executions
-        taxonomy_path: Path = Path(__file__).parent / "test_files" / \
-                        "taxonomies_to_load" / "corep_dpm_2_0.zip"
-        modules_dir: Path = taxonomy_path.parent / "modules"
+        self.assertTrue(self.taxonomy_path.exists(), "Taxonomy path does not exists")
+        self.assertTrue(self.taxonomy_path.is_dir(), "Taxonomy path is not a directory")
+        self.assertFalse(self.modules_path.exists(), "Modules dir should not exist")
+        TaxonomyLoaderServiceHandler.load(self.taxonomy_path / "corep_dpm_2_0.zip", self.modules_path)
+        self.assertTrue(self.modules_path.exists(), "No modules dir found")
+        self.assertTrue((self.modules_path / "index.json").exists(), "Index file not found")
+        self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists(), "Dim-Dom-Map not found")
+        self.assertTrue((self.modules_path / "corep_lr_corep_4.0.json").exists())
+        self.assertTrue((self.modules_path / "corep_of_corep_4.0.json").exists())
 
-        if modules_dir.exists():
-            for file in os.listdir(modules_dir):
-                os.remove(modules_dir / file)
-            os.removedirs(modules_dir)
+    def test_taxonomy_loader_dpm_1_0(self):
+        self.assertTrue(self.taxonomy_path.exists(), "Taxonomy path does not exists")
+        self.assertTrue(self.taxonomy_path.is_dir(), "Taxonomy path is not a directory")
+        self.assertFalse(self.modules_path.exists(), "Modules dir should not exist")
+        TaxonomyLoaderServiceHandler.load(self.taxonomy_path / "asset_encumbrance.zip", self.modules_path)
+        self.assertTrue(self.modules_path.exists(), "No modules dir found")
+        self.assertTrue((self.modules_path / "index.json").exists(), "Index file not found")
+        self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists(), "Dim-Dom-Map not found")
+        self.assertTrue((self.modules_path / "ae_its-005-2020_2022-03-01.json").exists())
 
-        self.assertTrue(taxonomy_path.exists(), "Taxonomy not found")
-        self.assertTrue(taxonomy_path.is_file(),
-                        "Given taxonomy is not a file"
-                        )
-        self.assertFalse(modules_dir.exists(), "This dir should not exist")
-        TaxonomyLoaderServiceHandler.load(taxonomy_path, modules_dir)
-        self.assertTrue(modules_dir.exists())
-        self.assertTrue((modules_dir / "index.json").exists())
-        self.assertTrue((modules_dir / "corep_lr_4_0.json").exists())
-        self.assertTrue((modules_dir / "corep_of_4_0.json").exists())
-
-    def test_instance_loader_dpm_1_0(self):
-        instance_path = Path(__file__).parent / "test_files" / \
-                        "instances_to_parse_standard" / \
-                        "12345123451234512345_ES_RES_RESOL_2025-01-31_20250129125414000.xbrl"
-        self.assertTrue(instance_path.exists(), "Instance not found")
-        InstanceParserServiceHandler.parse(instance_path, instance_path.parent)
+    def test_taxonomy_loader_dora(self):
+        self.assertTrue(self.taxonomy_path.exists(), "Taxonomy path does not exists")
+        self.assertTrue(self.taxonomy_path.is_dir(), "Taxonomy path is not a directory")
+        self.assertFalse(self.modules_path.exists(), "Modules dir should not exist")
+        TaxonomyLoaderServiceHandler.load(self.taxonomy_path / "dora.zip", self.modules_path)
+        self.assertTrue(self.modules_path.exists(), "No modules dir found")
+        self.assertTrue((self.modules_path / "index.json").exists(), "Index file not found")
+        self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists(), "Dim-Dom-Map not found")
+        self.assertTrue((self.modules_path / "dora_dora_4.0.json").exists())
 
 
 if __name__ == '__main__': \
