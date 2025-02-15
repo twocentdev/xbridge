@@ -144,13 +144,17 @@ class Instance:
 
     def parse(self):
         """Parses the XML file into the library objects."""
-
-        self.get_units()
-        self.get_contexts()
-        self.get_facts()
-        self.get_module_code()
-        self.get_filing_indicators()
-
+        try:
+            self.get_units()
+            self.get_contexts()
+            self.get_facts()
+            self.get_module_code()
+            self.get_filing_indicators()
+        except etree.XMLSyntaxError:
+            raise ValueError("Invalid XML format") 
+        except Exception as e:
+            raise ValueError(f"Error parsing instance: {str(e)}")
+    
         # TODO: Validate that all the assumptions about the EBA instances are correct
         # Should be an optional parameter (to avoid performance issues when it is known
         # that the assumptions are correct)
@@ -181,12 +185,13 @@ class Instance:
         from the XML instance file."""
         facts = []
         for child in self.root:
-            facts_prefixes = list(self.root.nsmap.keys())[
-                list(self.root.nsmap.values()).index(
-                    "http://www.eba.europa.eu/xbrl/crr/dict/met"
-                )
-            ]
-            if child.prefix == facts_prefixes:
+            facts_prefixes = []
+            for prefix, ns in self.root.nsmap.items():
+                if "http://www.eba.europa.eu/xbrl/crr/dict/met" in ns \
+                        or "http://www.eba.europa.eu/xbrl/crr/dict/dim" in ns:
+                    facts_prefixes.append(prefix)
+
+            if child.prefix in facts_prefixes:
                 fact = Fact(child)
                 if fact.unit == self._base_currency_unit:
                     self._decimals_monetary_set.add(fact.decimals)
