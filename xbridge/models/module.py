@@ -16,21 +16,23 @@ class Module:
 
     :param url: The module reference within the taxonomy.
 
-    :param taxonomy_code: The code of the module within to the taxonomy.
-
-    :param date: Dates contained in the module.
-
     :param tables: The tables that form the module.
 
     """
 
-    def __init__(self, code: str=None, url: str=None, taxonomy_code: str=None, date: str=None, tables=None):
+    def __init__(self,
+                 code: str=None,
+                 url: str=None,
+                 tables=None,
+                 taxonomy_architecture: str=None,
+                 framework_code: str=None,
+                 framework_version: str=None):
         self.__code: str = code
         self.__url: str = url
-        self.__taxonomy_code: str = taxonomy_code
-        self.__date: str = date
         self.__tables: [Table] = tables if tables is not None else []
-        self.__taxonomy_module_path: str = ""
+        self.__taxonomy_architecture = taxonomy_architecture
+        self.__framework_code = framework_code
+        self.__framework_version = framework_version
 
     @property
     def code(self):
@@ -41,29 +43,27 @@ class Module:
         return self.__url
 
     @property
-    def taxonomy_code(self):
-        return self.__taxonomy_code
-
-    @property
-    def date(self):
-        return self.__date
-
-    @property
     def tables(self) -> [Table]:
         return self.__tables.copy()
 
     @property
-    def taxonomy_module_path(self):
-        return self.__taxonomy_module_path
+    def taxonomy_architecture(self):
+        return self.__taxonomy_architecture
 
-    @taxonomy_module_path.setter
-    def taxonomy_module_path(self, path: str):
-        self.__taxonomy_module_path: str = path
+    @property
+    def framework_code(self):
+        return self.__framework_code
+
+    @property
+    def framework_version(self):
+        return self.framework_version
 
     @property
     def variables_location(self):
-        """Returns a dictionary with the :obj:`variables <xbridge.taxonomy.Variable>`
-        and the :obj:`tables <xbridge.taxonomy.Table>` where they are present"""
+        """
+        Returns a dictionary with the :obj:`variables <xbridge.taxonomy.Variable>`
+        and the :obj:`tables <xbridge.taxonomy.Table>` where they are present
+        """
         variables = {}
         for table in self.tables:
             for variable in table.variables:
@@ -75,8 +75,10 @@ class Module:
 
     @property
     def repeated_variables(self):
-        """Returns a dictionary with the :obj:`variables <xbridge.taxonomy.Variable>` and the :obj:`tables <xbridge.taxonomy.Table>`
-        where they are present, if they are repeated"""
+        """
+        Returns a dictionary with the :obj:`variables <xbridge.taxonomy.Variable>`
+        and the :obj:`tables <xbridge.taxonomy.Table>` where they are present, if they are repeated
+        """
         result = {}
         for k, v in self.variables_location.items():
             if len(v) > 1:
@@ -96,25 +98,12 @@ class Module:
         return variables
 
     def to_dict(self):
+        # TODO: update to parse mappers to json
         return {
             "code": self.code,
             "url": self.url,
-            "taxonomy_code": self.taxonomy_code,
-            "date": self.date,
             "tables": [tab.to_dict() for tab in self.tables],
         }
 
     def __repr__(self) -> str:
         return f"<Module - {self.code}>"
-
-    def __eq__(self, other):
-        if not isinstance(other, Module):
-            return NotImplemented
-        return (
-            self.code == other.code
-            and self.url == other.url
-            and self.taxonomy_code == other.taxonomy_code
-            and self.date == other.date
-            and self.taxonomy_module_path == other.taxonomy_module_path
-            and len(self.tables) == len(other.tables)
-        )
