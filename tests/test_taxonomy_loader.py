@@ -9,23 +9,11 @@ import taxonomy_loader
 from converter import INDEX_FILE
 
 MODULES_PATH = Path(__file__).parent.parent / "xbridge" / "modules"
-MODULES_ZIP = MODULES_PATH / "modules.zip"
 
 
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
-        # Clean Zip /modules.zip
-        if MODULES_ZIP.exists():
-            os.remove(MODULES_ZIP)
-
-        # Zip /modules dir
-        with ZipFile(MODULES_ZIP, mode="w") as modules_zip:
-            for filename in MODULES_PATH.iterdir():
-                if filename.name.endswith(".zip"):  # Avoid to zip modules.zip or infinite loop
-                    continue
-                modules_zip.write(filename, arcname=filename.name)
-
         # Delete "original" JSON(s)
         for json_file in MODULES_PATH.iterdir():
             if not json_file.name.endswith(".json"):  # Avoid deleting non json files
@@ -33,15 +21,6 @@ class MyTestCase(unittest.TestCase):
             if json_file.name == "index.json":  # Avoid deleting index.json
                 continue
             os.remove(json_file)
-
-    def tearDown(self):
-        # Restore json files
-        for item in MODULES_PATH.iterdir():
-            if not item.name.endswith(".zip"):
-                os.remove(item)
-        with ZipFile(MODULES_ZIP, mode="r") as modules_zip:
-            modules_zip.extractall(MODULES_PATH)
-        os.remove(MODULES_ZIP)
 
     def test_load_dpm_v01_taxonomy(self):
         self.skipTest("No needed this test anymore.")
