@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 import taxonomy_loader
+from api import convert_instance
 
 
 class MyTestCase(unittest.TestCase):
@@ -16,6 +17,13 @@ class MyTestCase(unittest.TestCase):
         taxonomy_path = Path(__file__).parent / "test_files" / "taxonomies_to_load"
         sys.argv.append(str(taxonomy_path / "dora.zip"))
         taxonomy_loader.main()
+
+    def test_instance_parser_dora(self):
+        instance_path = Path(__file__).parent / "test_files" \
+                        / "instances_to_parse_standard"
+        output_path = instance_path / "output"
+        for instance in instance_path.iterdir():
+            convert_instance(instance, output_path)
 
 if __name__ == '__main__':
     unittest.main()

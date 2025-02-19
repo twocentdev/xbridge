@@ -108,8 +108,8 @@ class Taxonomy:
         with ZipFile(input_path, mode="r") as zip_file:
             for file_path in zip_file.namelist():
                 file_path_obj = Path(file_path)
-                if str(file_path_obj) == \
-                        "www.eba.europa.eu\\eu\\fr\\xbrl\\crr\\dict\\dim\\dim-def.xml":
+                if file_path == \
+                        "www.eba.europa.eu/eu/fr/xbrl/crr/dict/dim/dim-def.xml":
                     bin_read = zip_file.read(file_path)
                     root = etree.fromstring(bin_read.decode('utf-8'))
                     dim_dom_mapping = self._get_dim_dom_mapping(root)
@@ -222,3 +222,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

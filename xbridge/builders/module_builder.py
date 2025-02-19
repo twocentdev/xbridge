@@ -1,3 +1,4 @@
+from builders.table_builder import TableBuilder
 from models.module import Module
 from models.table import Table
 
@@ -30,12 +31,20 @@ class ModuleBuilder:
     def add_table(self, table: Table):
         self.__tables.append(table)
 
-    def from_json(self, json: dict):
-        # TODO: read mapping from json
-        self.set_code(json["code"])
-        self.set_url(json["url"])
-
     def build(self) -> Module:
+        url_split = self.__url.split("/")
+        if len(url_split) == 10:  # Architecture 2.0
+            self.set_taxonomy_architecture("2.0")
+            self.set_framework_code(url_split[6])
+            self.set_framework_version(url_split[7])
+        elif len(url_split) == 11:  # Architecture 1.0
+            self.set_taxonomy_architecture("1.0")
+            self.set_framework_code(url_split[7])
+            self.set_framework_version(url_split[8])
+        else:
+            raise ValueError(
+                f"Invalid taxonomy architecture: {len(url_split)}")
+
         mod = Module(self.__code,
                      self.__url,
                      self.__tables,

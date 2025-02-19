@@ -63,21 +63,37 @@ class TablesParser:
 
         # Can parse table ONLY if there is 1 table template
         if len(table_json["tableTemplates"].keys()) > 1:
-            raise ValueError(f"More than one table template found in {ref_file}")
+            raise ValueError(
+                f"More than one table template found in {ref_file}")
 
         table_code = list(table_json["tableTemplates"].keys())[0]
         tab_builder.set_code(table_code)
-        architecture = TablesParser.__extract_table_architecture(table_json["tableTemplates"][table_code]["columns"])
+        architecture = TablesParser.__extract_table_architecture(
+            table_json["tableTemplates"][table_code]["columns"])
         tab_builder.set_architecture(architecture)
         tab_builder.set_url(f"{Path(ref_file).stem}.csv")
         tab_builder.create_open_keys(table_json["tableTemplates"][table_code])
 
         if architecture == "datapoints":
             for datapoint in TablesParser.__extract_datapoints(
-                    table_json["tableTemplates"][table_code]["columns"]["datapoint"]["propertyGroups"]):
+                    table_json["tableTemplates"][table_code]["columns"][
+                        "datapoint"]["propertyGroups"]):
                 tab_builder.add_variable(datapoint)
         elif architecture == 'headers':
-            for column in TablesParser.__extract_columns(table_json["tableTemplates"][table_code]["columns"]):
+            for column in TablesParser.__extract_columns(
+                    table_json["tableTemplates"][table_code]["columns"]):
                 tab_builder.add_column(column)
 
         return tab_builder
+
+    @staticmethod
+    def from_serialized(table_json: dict) -> TableBuilder:
+        tab_builder = TableBuilder()
+        tab_builder.set_architecture(table_json["architecture"])
+        tab_builder.set_code(table_json["code"])
+        tab_builder.set_url(table_json["url"])
+        if table_json["architecture"] == 'headers':
+            for column in table_json.pop("columns"):
+                tab_builder.add_column(column)
+        return tab_builder
+

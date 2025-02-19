@@ -29,43 +29,13 @@ class ModulesParser:
         file_path = Path(ref_file)
         mod_builder.set_code(file_path.stem)
         mod_builder.set_url(ref_file)
-        url_split = ref_file.split("/")
-        if len(url_split) == 10:  # Architecture 2.0
-            mod_builder.set_taxonomy_architecture("2.0")
-            mod_builder.set_framework_code(url_split[6])
-            mod_builder.set_framework_version(url_split[7])
-        elif len(url_split) == 11:  # Architecture 1.0
-            mod_builder.set_taxonomy_architecture("1.0")
-            mod_builder.set_framework_code(url_split[7])
-            mod_builder.set_framework_version(url_split[8])
-        else:
-            raise ValueError(f"Invalid taxonomy architecture: {len(url_split)}")
-
         return mod_builder
 
     @staticmethod
     def from_serialized(module_json: dict) -> ModuleBuilder:
         mod_builder = ModuleBuilder()
-        mod_builder.from_json(module_json)
-        #
-        # tables = module_json.pop("tables")
-        # for table_json in module_json.pop("tables"):
-        #     table_builder = TableBuilder()
-        #     table_builder.from_json(table_json)
-        #     # open keys
-        #     for open_key in table_json.pop("open_keys"):
-        #         table_builder.add_open_key(open_key)
-        #     # variables
-        #     for variable_json in table_json.pop("variables"):
-        #         variable_builder = VariableBuilder()
-        #         variable_builder.from_json(variable_json)
-        #         # attributes
-        #         for attribute in table_json.pop("attributes"):
-        #             table_builder.add_attribute(attribute)
-        #
-        #         table_builder.add_variable(variable_builder.build())
-        #     mod_builder.add_table(table_builder.build())
-        #
+        mod_builder.set_code(module_json["code"])
+        mod_builder.set_url(module_json["url"])
         return mod_builder
 
     @staticmethod
@@ -89,3 +59,4 @@ class ModulesParser:
             if TablesParser.file_is_table(file) and Path(file).stem in tables:
                 files.append(file)
         return files
+

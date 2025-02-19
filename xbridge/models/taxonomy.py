@@ -35,7 +35,3 @@ class Taxonomy:
             index[index_url] = index_file_ref
         return index
 
-    def __eq__(self, other):
-        if not isinstance(other, Taxonomy):
-            return NotImplemented
-        return len(self.modules) == len(other.modules)

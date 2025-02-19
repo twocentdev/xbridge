@@ -309,7 +309,9 @@ class Table:
                 self._open_keys_mapping[dim_code] = column_ref[2:]
 
     def extract_variables(self):
-        """Extract the :obj:`variable <xbridge.taxonomy.Variable>` for the :obj:`table <xbridge.taxonomy.Table>`"""
+        """
+        Extract the :obj:`variable <xbridge.taxonomy.Variable>` for the :obj:`table <xbridge.taxonomy.Table>`
+        """
         self._variables = []
 
         if self.code in self.table_setup_json["tableTemplates"]:
@@ -499,3 +501,4 @@ class Variable:
 
     def __repr__(self) -> str:
         return f"<Variable - {self.code}>"
+

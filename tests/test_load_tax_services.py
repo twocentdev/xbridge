@@ -1,10 +1,6 @@
 import os
 import unittest
 from pathlib import Path
-from sys import modules
-
-from services.instance_parser_service_handler import \
-    InstanceParserServiceHandler
 from services.taxonomy_loader_service_handler import \
     TaxonomyLoaderServiceHandler
 

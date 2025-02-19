@@ -55,3 +55,4 @@ class DimDomMapParser:
                 and not ".DS_Store" in file_path
                 and file_path.endswith("dim-def.xml")
         )
+
