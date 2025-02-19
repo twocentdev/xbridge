@@ -7,7 +7,7 @@ from parsers.scenario_parser import ScenarioParser
 class ContextParser:
 
     @staticmethod
-    def from_xml(root_elem) -> Context:
+    def from_xml(root_elem) -> ContextBuilder:
         builder = ContextBuilder()
         builder.set_id(root_elem.attrib["id"])
         builder.set_entity(
@@ -22,5 +22,5 @@ class ContextParser:
         )
         builder.set_scenario(ScenarioParser.from_xml(
             root_elem.find("{http://www.xbrl.org/2003/instance}scenario")
-        ))
-        return builder.build()
+        ).build())
+        return builder

@@ -56,19 +56,30 @@ class TableBuilder:
 
     def __create_variable_df(self):
         variables = []
-        for variable in self.__variables:
-            variable_info = {}
-            for dim_k, dim_v in variable.dimensions.items():
-                if dim_k not in ("unit", "decimals"):
-                    variable_info[dim_k] = dim_v.split(":")[1]
-            if "concept" in variable.dimensions:
-                variable_info["metric"] = \
-                    variable.dimensions["concept"].split(":")[1]
-                del variable_info["concept"]
 
-            variable_info["datapoint"] = variable.code
-            variables.append(copy.copy(variable_info))
-        self.__datapoint_df = pd.DataFrame(variables)
+        if self.__architecture == 'datapoints':
+            for variable in self.__variables:
+                variable_info = {}
+                for dim_k, dim_v in variable.dimensions.items():
+                    if dim_k not in ("unit", "decimals"):
+                        variable_info[dim_k] = dim_v.split(":")[1]
+                if "concept" in variable.dimensions:
+                    variable_info["metric"] = variable.dimensions["concept"].split(":")[1]
+                    del variable_info["concept"]
+                variable_info["datapoint"] = variable.code
+                variables.append(copy.copy(variable_info))
+        elif self.__architecture == 'headers':
+            for column in self.__columns:
+                variable_info = {"datapoint": column["variable_id"]}
+                if "dimensions" in column:
+                    for dim_k, dim_v in column["dimensions"].items():
+                        if dim_k == "concept":
+                            variable_info["metric"] = dim_v.split(":")[1]
+                        elif dim_k not in ("unit", "decimals"):
+                            variable_info[dim_k.split(":")[1]] = dim_v.split(":")[1]
+                variables.append(copy.copy(variable_info))
+
+        self.__variable_df = pd.DataFrame(variables)
 
     def build(self) -> Table:
         self.__create_variable_df()
@@ -81,6 +92,7 @@ class TableBuilder:
                      self.__columns,
                      self.__open_keys_mapping)
 
+    # TODO: deprecated
     def from_json(self, json: dict):
         self.set_code(json["code"])
         self.set_url(json["url"])

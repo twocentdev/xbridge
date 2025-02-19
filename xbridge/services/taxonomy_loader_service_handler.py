@@ -30,13 +30,14 @@ class TaxonomyLoaderServiceHandler:
         with ZipFile(tax_path, mode="r") as zip_file:
             tax_builder = TaxonomyBuilder()
             # Parsing modules files
-            for module_file in filter(ModulesParser.file_is_mod, zip_file.namelist()):
+            for module_file in filter(ModulesParser.file_is_mod,
+                                      zip_file.namelist()):
                 print(module_file)  # TODO: logger
                 module_builder = ModulesParser.from_json(zip_file, module_file)
                 # Parsing table(s) file(s)
                 for table_file in ModulesParser.tables_files_in_module(
-                    zip_file,
-                    ModulesParser.tables_in_module(zip_file, module_file)):
+                        zip_file,
+                        ModulesParser.tables_in_module(zip_file, module_file)):
                     tab_builder = TablesParser.from_json(zip_file, table_file)
                     module_builder.add_table(tab_builder.build())
                 tax_builder.add_module(module_builder.build())
@@ -58,3 +59,4 @@ class TaxonomyLoaderServiceHandler:
                 modules_path,
                 module
             )
+

@@ -5,7 +5,7 @@ from models.scenario import Scenario
 class ScenarioParser:
 
     @staticmethod
-    def from_xml(root_elem) -> Scenario:
+    def from_xml(root_elem) -> ScenarioBuilder:
         builder = ScenarioBuilder()
         if root_elem is not None:
             for child in root_elem:
@@ -24,5 +24,5 @@ class ScenarioParser:
                     value = child.text
                 value = value.split(":")[1] if ":" in value else value
                 # self.dimensions[dimension] = value
-                builder.set_dimension(dimension, value)
-        return builder.build()
+                builder.add_dimension(dimension, value)
+        return builder

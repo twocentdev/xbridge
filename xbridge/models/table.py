@@ -118,3 +118,4 @@ class Table:
 
     def __repr__(self) -> str:
         return f"<Table - {self.code}>"
+
