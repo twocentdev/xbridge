@@ -18,12 +18,21 @@ class MyTestCase(unittest.TestCase):
         sys.argv.append(str(taxonomy_path / "dora.zip"))
         taxonomy_loader.main()
 
+    def test_instance_parser_dpm_1_0(self):
+        instance_path = Path(__file__).parent / "test_files" \
+                        / "instances_to_parse_standard"
+        output_path = instance_path / "output"
+        for instance in instance_path.iterdir():
+            if "xbrl" in instance.name and "AE" in instance.name:
+                convert_instance(instance, output_path)
+
     def test_instance_parser_dora(self):
         instance_path = Path(__file__).parent / "test_files" \
                         / "instances_to_parse_standard"
         output_path = instance_path / "output"
         for instance in instance_path.iterdir():
-            convert_instance(instance, output_path)
+            if "xbrl" in instance.name:
+                convert_instance(instance, output_path)
 
 if __name__ == '__main__':
     unittest.main()

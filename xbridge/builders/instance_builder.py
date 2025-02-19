@@ -1,3 +1,5 @@
+import copy
+
 import pandas as pd
 
 from models.instance import Instance
@@ -37,6 +39,9 @@ class InstanceBuilder:
     def set_contexts(self, contexts):
         self.__contexts = contexts
 
+    def get_contexts(self):
+        return copy.copy(self.__contexts)
+
     def set_module_code(self, module_code):
         self.__module_code = module_code
 
@@ -61,8 +66,14 @@ class InstanceBuilder:
     def set_base_currency_unit(self, base_currency_unit):
         self.__base_currency_unit = base_currency_unit
 
+    def get_base_currency_unit(self):
+        return self.__base_currency_unit
+
     def set_pure_unit(self, pure_unit):
         self.__pure_unit = pure_unit
+
+    def get_pure_unit(self):
+        return self.__pure_unit
 
     def set_decimals_monetary(self, decimals_monetary):
         self.__decimals_monetary = decimals_monetary

@@ -38,6 +38,12 @@ class TableBuilder:
     def add_column(self, column):
         self.__columns.append(column)
 
+    def add_open_key(self, value):
+        self.__open_keys.append(value)
+
+    def add_open_key_mapping(self, key, value):
+        self.__open_keys_mapping[key] = value
+
     def add_variable(self, variable: Variable):
         self.__variables.append(variable)
 

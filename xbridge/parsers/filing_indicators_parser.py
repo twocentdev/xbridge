@@ -5,7 +5,7 @@ from models.filing_indicator import FilingIndicator
 class FilingIndicatorsParser:
 
     @staticmethod
-    def from_xml(root_elem) -> FilingIndicator:
+    def from_xml(root_elem) -> FilingIndicatorBuilder:
         """Parse the XML node with the filing indicator."""
 
         builder = FilingIndicatorBuilder()
@@ -18,4 +18,4 @@ class FilingIndicatorsParser:
             builder.set_value(True)
         builder.set_table(root_elem.text)
         builder.set_context(root_elem.attrib.get("contextRef"))
-        return builder.build()
+        return builder

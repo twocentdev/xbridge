@@ -42,6 +42,7 @@ class TaxonomyLoaderServiceHandler:
                     module_builder.add_table(tab_builder.build())
                 tax_builder.add_module(module_builder.build())
             tax = tax_builder.build()
+            # TODO: clean memory
             print(tax)
 
         dim_dom_map = DimDomMapParser.from_json(tax_path)
@@ -59,4 +60,5 @@ class TaxonomyLoaderServiceHandler:
                 modules_path,
                 module
             )
-
+        # TODO: zip files
+        # TODO: delete "temp"/"unzip" files, if necessary

@@ -2,6 +2,7 @@ from pathlib import Path
 
 from lxml import etree
 
+from builders.context_builder import ContextBuilder
 from builders.fact_builder import FactBuilder
 from builders.instance_builder import InstanceBuilder
 from models.fact import Fact
@@ -15,14 +16,19 @@ class InstanceParser:
 
     @staticmethod
     def from_xml(input_path: Path) -> InstanceBuilder:
-        root_elem = etree.parse(input_path).getroot()
-        builder = InstanceBuilder()
-        builder = InstanceParser.__get_units(root_elem, builder)
-        builder = InstanceParser.__get_contexts(root_elem, builder)
-        builder = InstanceParser.__get_facts(root_elem, builder)
-        builder = InstanceParser.__get_module_code(root_elem, builder)
-        builder = InstanceParser.__get_filing_indicators(root_elem, builder)
-        # What more??
+        try:
+            root_elem = etree.parse(input_path).getroot()
+            builder = InstanceBuilder()
+            builder = InstanceParser.__get_units(root_elem, builder)
+            builder = InstanceParser.__get_contexts(root_elem, builder)
+            builder = InstanceParser.__get_facts(root_elem, builder)
+            builder = InstanceParser.__get_module_code(root_elem, builder)
+            builder = InstanceParser.__get_filing_indicators(root_elem, builder)
+        except etree.XMLSyntaxError:
+            raise ValueError("Invalid XML format")
+        except Exception as e:
+            raise ValueError(f"Error parsing instance: {str(e)}")
+        # TODO: What more??
         return builder
 
     @staticmethod
@@ -41,12 +47,9 @@ class InstanceParser:
                 # For the XBRL-CSV, we assume one currency for the whole instance
                 # We take the first currency we find, because we assume that,
                 # in the current EBA architecture, all the facts have the same currency
-                # self._base_currency = unit_value
                 instance_builder.set_base_currency(unit_value)
-                # self._base_currency_unit = unit_name
                 instance_builder.set_base_currency_unit(unit_name)
             if unit_value in ["xbrli:pure", "pure"]:
-                # self._pure_unit = unit_name
                 instance_builder.set_pure_unit(unit_name)
             units[unit_name] = unit_value
         instance_builder.set_units(units)
@@ -61,7 +64,8 @@ class InstanceParser:
                 "{http://www.xbrl.org/2003/instance}context",
                 namespaces
         ):
-            context_object = ContextParser.from_xml(context)
+            context_builder: ContextBuilder = ContextParser.from_xml(context)
+            context_object = context_builder.build()
             contexts[context_object.id] = context_object
         instance_builder.set_contexts(contexts)
 
@@ -79,24 +83,25 @@ class InstanceParser:
     def __get_facts(root_elem, instance_builder: InstanceBuilder) -> \
             InstanceBuilder:
         facts = []
+
+        facts_prefixes = []  # TODO: may extract from here outside for?
+        for prefix, ns in root_elem.nsmap.items():
+            if "http://www.eba.europa.eu/xbrl/crr/dict/met" in ns \
+                    or "http://www.eba.europa.eu/xbrl/crr/dict/dim" in ns:
+                facts_prefixes.append(prefix)
+
         for child in root_elem:
-            facts_prefixes = list(root_elem.nsmap.keys())[
-                list(root_elem.nsmap.values()).index(
-                    "http://www.eba.europa.eu/xbrl/crr/dict/met"
-                )
-            ]
-            if child.prefix == facts_prefixes:
+            if child.prefix in facts_prefixes:
                 fact: Fact = FactParser.from_xml(child)
-                instance: Instance = instance_builder.build() # TODO: do not do this
-                if fact.unit == instance.base_currency_unit:
+                if fact.unit == instance_builder.get_base_currency_unit():
                     instance_builder.add_decimals_monetary_set(fact.decimals)
-                if fact.unit == instance.pure_unit:
+                if fact.unit == instance_builder.get_pure_unit():
                     instance_builder.add_decimals_percentage_set(fact.decimals)
                 facts.append(fact)
 
         instance_builder.set_facts(facts)
 
-        # TODO: where to do this??
+        # TODO: where to do this?? To builder.
         # self.get_facts_list_dict()
         # self.to_df()
         return instance_builder
@@ -120,17 +125,13 @@ class InstanceParser:
         for fil_ind in root_elem\
                 .find("{http://www.eurofiling.info/xbrl/ext/filing-indicators}fIndicators")\
                 .findall("{http://www.eurofiling.info/xbrl/ext/filing-indicators}filingIndicator"):
-            filing_indicators.append(FilingIndicatorsParser.from_xml(fil_ind))
-            # filing_indicators.append(FilingIndicator(fil_ind))
+            filing_indicators.append(
+                FilingIndicatorsParser.from_xml(fil_ind).build())
 
         instance_builder.set_filing_indicators(filing_indicators)
-        # self._filing_indicators = filing_indicators
         first_fil_ind = filing_indicators[0]
-        instance: Instance = instance_builder.build() # TODO: do not do this
-        fil_ind_context = instance.contexts[first_fil_ind.context]
-        # fil_ind_context = self.contexts[first_fil_ind.context]
+        fil_ind_context = instance_builder.get_contexts() \
+            [first_fil_ind.context]
         instance_builder.set_entity(fil_ind_context.entity)
-        # self._entity = fil_ind_context.entity
         instance_builder.set_period(fil_ind_context.period)
-        # self._period = fil_ind_context.period
         return instance_builder
