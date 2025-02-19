@@ -101,7 +101,22 @@ class Instance:
 
     @property
     def decimals_monetary(self):
-        return self.__decimals_monetary
+        """
+        Returns the single value for monetary values in the instance.
+        """
+        max_reported = (
+            max(self.__decimals_monetary_set)
+            if len(self.__decimals_monetary_set) > 0
+            else None
+        )
+        if max_reported:
+            ##Workaround
+            # We are assuming that the maximum number of decimals for monetary values
+            # is 2, in practice. We found cases with higher numbers for some values,
+            # and that causes problems in the CSV output, because the maximum was
+            # applying.
+            return min(int(max_reported), 2)
+        return None
 
     @property
     def decimals_percentage(self):
@@ -121,3 +136,4 @@ class Instance:
 
     def get_fact_list_dict(self) -> dict:
         pass
+

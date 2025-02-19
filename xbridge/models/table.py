@@ -63,6 +63,12 @@ class Table:
         return self.__attributes.copy()
 
     @property
+    def variable_columns(self):
+        columns = set(self.variable_df.columns)
+        columns.remove("datapoint")
+        return columns
+
+    @property
     def variable_df(self):
         variables = []
         if self.architecture == "datapoints":

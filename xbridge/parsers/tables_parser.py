@@ -92,8 +92,13 @@ class TablesParser:
         tab_builder.set_architecture(table_json["architecture"])
         tab_builder.set_code(table_json["code"])
         tab_builder.set_url(table_json["url"])
+        if "open_keys" in table_json.keys():
+            for open_key in table_json["open_keys"]:
+                tab_builder.add_open_key(open_key)
+        if "open_keys_mapping" in table_json.keys():
+            for k, v in table_json["open_keys_mapping"].items():
+                tab_builder.add_open_key_mapping(k, v)
         if table_json["architecture"] == 'headers':
             for column in table_json.pop("columns"):
                 tab_builder.add_column(column)
         return tab_builder
-
