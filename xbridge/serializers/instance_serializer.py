@@ -1,7 +1,6 @@
-import copy
 import csv
 import json
-import os
+import logging
 from pathlib import Path
 
 import pandas as pd
@@ -11,6 +10,9 @@ from models.filing_indicator import FilingIndicator
 from models.instance import Instance
 from models.module import Module
 from models.table import Table
+
+
+logger = logging.getLogger(__name__)
 
 
 class InstanceSerializer:
@@ -38,7 +40,7 @@ class InstanceSerializer:
         )
 
         reported_tables = InstanceSerializer.__filling_indicators(
-            reports_dir / "FilingInidcators.csv",
+            reports_dir / "FilingIndicators.csv",
             instance.filling_indicators
         )
         # Save each reported table
@@ -63,6 +65,7 @@ class InstanceSerializer:
                 csv_writer.writerow([elem.table, value])
                 if elem.value:
                     reported_tables.append(elem.table)
+        logger.info(f"The reported tables are: {reported_tables}")
         return reported_tables
 
     @staticmethod
@@ -100,7 +103,7 @@ class InstanceSerializer:
                 {
                     "documentInfo": {
                         "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
-                        "extends": [module_url],
+                        "extends": [f"http://{module_url}"],
                     }
                 },
                 fl,
@@ -124,7 +127,7 @@ class InstanceSerializer:
             table: Table,
             dim_dom_map: DimDomMap,
             instance: Instance):
-        print(f"About to parse table {table.code}")
+        logger.info(f"About to parse table {table.code}.")
         ##Workaround:
         # To calculate the table code for abstract tables, we look whether the name
         # ends with a letter, and if so, we remove the last part of the code

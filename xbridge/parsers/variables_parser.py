@@ -1,5 +1,10 @@
+import logging
+
 from builders.variable_builder import VariableBuilder
 from models.variable import Variable
+
+
+logger = logging.getLogger(__name__)
 
 
 class VariablesParser:

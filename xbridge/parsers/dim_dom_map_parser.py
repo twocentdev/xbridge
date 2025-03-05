@@ -1,9 +1,13 @@
+import logging
 import sys
 from pathlib import Path
 from zipfile import ZipFile
 
 from lxml import etree
 from builders.dim_dom_map_builder import DimDomMapBuilder
+
+
+logger = logging.getLogger(__name__)
 
 
 class DimDomMapParser:
@@ -13,6 +17,7 @@ class DimDomMapParser:
         with ZipFile(input_path, mode="r") as zip_file:
             map_builder = DimDomMapBuilder()
             for f in filter(DimDomMapParser.is_dim_def, zip_file.namelist()):
+                logger.info(f"Dimensions found in {f}")
                 bin_read = zip_file.read(f)
                 try:
                     root = etree.fromstring(
@@ -55,4 +60,3 @@ class DimDomMapParser:
                 and not ".DS_Store" in file_path
                 and file_path.endswith("dim-def.xml")
         )
-

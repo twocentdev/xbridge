@@ -1,0 +1,101 @@
+{
+  "code": "dora",
+  "url": "www.eba.europa.eu/eu/fr/xbrl/crr/fws/dora/4.0/mod/dora.json",
+  "taxonomy_code": "4.0",
+  "date": "mod",
+  "tables": [
+    {
+      "code": "B_02-02",
+      "url": "b_02.02.csv",
+      "open_keys": [
+        "TYA",
+        "CRZ",
+        "ICT",
+        "IOB",
+        "qLES",
+        "qNMP",
+        "qNMR",
+        "qNNB"
+      ],
+      "variables": [
+        {
+          "code": "c0040",
+          "dimensions": {
+            "concept": "eba_met_4.0:qNMX"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0070",
+          "dimensions": {
+            "concept": "eba_met:di1431"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0080",
+          "dimensions": {
+            "concept": "eba_met:di1432"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0090",
+          "dimensions": {
+            "concept": "eba_met_3.5:ei1419"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0100",
+          "dimensions": {
+            "concept": "eba_met:ii1712",
+            "eba_dim_3.5:RCA": "eba_CO:x11"
+          },
+          "attributes": "$decimalsInteger"
+        },
+        {
+          "code": "c0110",
+          "dimensions": {
+            "concept": "eba_met:ii1712",
+            "eba_dim_3.5:RCA": "eba_CO:x10"
+          },
+          "attributes": "$decimalsInteger"
+        },
+        {
+          "code": "c0120",
+          "dimensions": {
+            "concept": "eba_met_3.5:ei1355"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0140",
+          "dimensions": {
+            "concept": "eba_met_3.5:ei1396"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0170",
+          "dimensions": {
+            "concept": "eba_met_3.5:ei1499",
+            "eba_dim_3.4:NAT": "eba_TA:x159",
+            "eba_dim_3.5:RCA": "eba_CO:x10"
+          },
+          "attributes": null
+        },
+        {
+          "code": "c0180",
+          "dimensions": {
+            "concept": "eba_met_3.5:ei1498",
+            "eba_dim_3.4:NAT": "eba_TA:x161",
+            "eba_dim_3.5:RCA": "eba_CO:x11"
+          },
+          "attributes": null
+        }
+      ],
+      "attributes": []
+    }
+  ]
+}

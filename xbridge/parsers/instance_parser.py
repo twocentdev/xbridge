@@ -1,21 +1,25 @@
+import json
+import logging
 from pathlib import Path
 
 from lxml import etree
 
 from builders.context_builder import ContextBuilder
-from builders.fact_builder import FactBuilder
 from builders.instance_builder import InstanceBuilder
 from models.fact import Fact
-from models.instance import Instance
 from parsers.context_parser import ContextParser
 from parsers.fact_parser import FactParser
 from parsers.filing_indicators_parser import FilingIndicatorsParser
+
+
+logger = logging.getLogger(__name__)
 
 
 class InstanceParser:
 
     @staticmethod
     def from_xml(input_path: Path) -> InstanceBuilder:
+        logger.debug(f"About to read XML to parse instance.")
         try:
             root_elem = etree.parse(input_path).getroot()
             builder = InstanceBuilder()
@@ -101,9 +105,6 @@ class InstanceParser:
 
         instance_builder.set_facts(facts)
 
-        # TODO: where to do this?? To builder.
-        # self.get_facts_list_dict()
-        # self.to_df()
         return instance_builder
 
     @staticmethod
@@ -122,11 +123,23 @@ class InstanceParser:
     def __get_filing_indicators(root_elem, instance_builder: InstanceBuilder) \
             -> InstanceBuilder:
         filing_indicators = []
-        for fil_ind in root_elem\
-                .find("{http://www.eurofiling.info/xbrl/ext/filing-indicators}fIndicators")\
-                .findall("{http://www.eurofiling.info/xbrl/ext/filing-indicators}filingIndicator"):
-            filing_indicators.append(
-                FilingIndicatorsParser.from_xml(fil_ind).build())
+        eba_fil_ind = "{http://www.eurofiling.info/xbrl/ext/filing-indicators}fIndicators"
+        if root_elem \
+            .find(eba_fil_ind):
+            logger.info(f"Instance is EBA format.")
+            for fil_ind in root_elem \
+                    .find(eba_fil_ind) \
+                    .findall(
+                "{http://www.eurofiling.info/xbrl/ext/filing-indicators}filingIndicator"):
+                filing_indicators.append(
+                    FilingIndicatorsParser.from_xml(fil_ind).build())
+        else:
+            logger.warning(f"Instance is NOT EBA format.")
+            for fil_ind in root_elem \
+                .find("{http://www.bde.es/es/fr/esrs/comun/2008-06-01/preambulo}EstadosReportados") \
+                .findall("{http://www.bde.es/es/fr/esrs/comun/2008-06-01/preambulo}CodigoEstado"):
+                filing_indicators.append(
+                    FilingIndicatorsParser.from_xml(fil_ind).build())
 
         instance_builder.set_filing_indicators(filing_indicators)
         first_fil_ind = filing_indicators[0]

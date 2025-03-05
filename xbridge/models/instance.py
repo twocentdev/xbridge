@@ -23,8 +23,6 @@ class Instance:
                  decimals_percentage_set=None,
                  identifier_prefix=None
                  ):
-        # self.path = path
-        # self.root = etree.parse(self.path).getroot()
 
         self.__facts_list_dict = facts_list_dict
         self.__df = df
@@ -137,3 +135,5 @@ class Instance:
     def get_fact_list_dict(self) -> dict:
         pass
 
+    def __repr__(self):
+        return f"Instance()"

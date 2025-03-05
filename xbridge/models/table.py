@@ -25,18 +25,20 @@ class Table:
     """
 
     def __init__(self,
-                 code: str=None,
-                 url: str=None,
-                 open_keys= [],  # TODO: extract_open_keys in TableBuilder
-                 variables= [],  # TODO: extract_variables in TableBuilder
-                 attributes= [],
-                 architecture: str=None,
-                 columns= [],  # TODO: extract_columns in TableBuilder
-                 open_keys_map= {} ):
+                 code: str = None,
+                 url: str = None,
+                 open_keys=[],  # TODO: extract_open_keys in TableBuilder
+                 variables=[],  # TODO: extract_variables in TableBuilder
+                 variable_df: pd.DataFrame = None,
+                 attributes=[],
+                 architecture: str = None,
+                 columns=[],  # TODO: extract_columns in TableBuilder
+                 open_keys_map={}):
         self.__code = code
         self.__url = url
         self.__open_keys = open_keys if open_keys is not None else []
         self.__variables = variables
+        self.__variable_df = variable_df
         self.__attributes = attributes if attributes is not None else []
         self.__architecture = architecture
         self.__columns = columns
@@ -69,30 +71,33 @@ class Table:
         return columns
 
     @property
-    def variable_df(self):
-        variables = []
-        if self.architecture == "datapoints":
-            for variable in self.variables:
-                variable_info = {}
-                for dim_k, dim_v in variable.dimensions.items():
-                    if dim_k not in {"unit", "decimals"}:
-                        variable_info[dim_k] = dim_v.split(":")[1]
-                if "concept" in variable.dimensions:
-                    variable_info["metric"] = variable.dimensions["concept"].split(":")[1]
-                    del variable_info["concept"]
-                variable_info["datapoint"] = variable.code
-                variables.append(copy.copy(variable_info))
-        elif self.architecture == "headers":
-            for column in self.columns:
-                variable_info = {"datapoint": column["variable_id"]}
-                if "dimensions" in column:
-                    for dim_k, dim_v in column["dimensions"].items():
-                        if dim_k == "concept":
-                            variable_info["metric"] = dim_v.split(":")[1]
-                        elif dim_k not in ("unit", "decimals"):
-                            variable_info[dim_k.split(":")[1]] = dim_v.split(":")[1]
-                variables.append(copy.copy(variable_info))
-        return pd.DataFrame(variables)
+    def variable_df(self):  # TODO: might not be here. To builder.
+        return self.__variable_df
+        # variables = []
+        # if self.architecture == "datapoints":
+        #     for variable in self.variables:
+        #         variable_info = {}
+        #         for dim_k, dim_v in variable.dimensions.items():
+        #             if dim_k not in {"unit", "decimals"}:
+        #                 variable_info[dim_k] = dim_v.split(":")[1]
+        #         if "concept" in variable.dimensions:
+        #             variable_info["metric"] = \
+        #             variable.dimensions["concept"].split(":")[1]
+        #             del variable_info["concept"]
+        #         variable_info["datapoint"] = variable.code
+        #         variables.append(copy.copy(variable_info))
+        # elif self.architecture == "headers":
+        #     for column in self.columns:
+        #         variable_info = {"datapoint": column["variable_id"]}
+        #         if "dimensions" in column:
+        #             for dim_k, dim_v in column["dimensions"].items():
+        #                 if dim_k == "concept":
+        #                     variable_info["metric"] = dim_v.split(":")[1]
+        #                 elif dim_k not in ("unit", "decimals"):
+        #                     variable_info[dim_k.split(":")[1]] = \
+        #                     dim_v.split(":")[1]
+        #         variables.append(copy.copy(variable_info))
+        # return pd.DataFrame(variables)
 
     @property
     def architecture(self):
@@ -124,4 +129,3 @@ class Table:
 
     def __repr__(self) -> str:
         return f"<Table - {self.code}>"
-

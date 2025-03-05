@@ -93,6 +93,7 @@ class TableBuilder:
                      self.__url,
                      self.__open_keys,
                      self.__variables,
+                     self.__variable_df,
                      self.__attributes,
                      self.__architecture,
                      self.__columns,

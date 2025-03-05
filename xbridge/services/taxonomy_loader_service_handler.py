@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -10,10 +11,16 @@ from serializers.module_serializer import ModuleSerializer
 from serializers.modules_index_serializer import ModulesIndexSerializer
 
 
+logger = logging.getLogger(__name__)
+
+
 class TaxonomyLoaderServiceHandler:
 
     @staticmethod
-    def load(tax_path: str | Path, modules_path: str | Path):
+    def load(tax_path: str | Path,
+             modules_path: str | Path,
+             filtered_paths: [str] = []):
+        logger.info(f"About to load taxonomy {tax_path}")
         tax_path = tax_path if isinstance(tax_path, Path) \
             else Path(tax_path)
         modules_path = modules_path if isinstance(modules_path, Path) \
@@ -29,21 +36,25 @@ class TaxonomyLoaderServiceHandler:
         # parse file(s)
         with ZipFile(tax_path, mode="r") as zip_file:
             tax_builder = TaxonomyBuilder()
-            # Parsing modules files
-            for module_file in filter(ModulesParser.file_is_mod,
-                                      zip_file.namelist()):
-                print(module_file)  # TODO: logger
-                module_builder = ModulesParser.from_json(zip_file, module_file)
+            mod_files = filter(ModulesParser.file_is_mod, zip_file.namelist())
+            if len(filtered_paths) > 0:
+                mod_files = filter(
+                    lambda x: any(x.startswith(base) for base in filtered_paths),
+                    mod_files
+                )
+            for file in mod_files:
+                logger.info(f"New module found in {file}")
+                module_builder = ModulesParser.from_json(zip_file, file)
                 # Parsing table(s) file(s)
                 for table_file in ModulesParser.tables_files_in_module(
                         zip_file,
-                        ModulesParser.tables_in_module(zip_file, module_file)):
+                        ModulesParser.tables_in_module(zip_file, file)):
+                    logger.info(f"New table found in {table_file}")
                     tab_builder = TablesParser.from_json(zip_file, table_file)
                     module_builder.add_table(tab_builder.build())
                 tax_builder.add_module(module_builder.build())
             tax = tax_builder.build()
             # TODO: clean memory
-            print(tax)
 
         dim_dom_map = DimDomMapParser.from_json(tax_path)
         # serialize model to file(s)

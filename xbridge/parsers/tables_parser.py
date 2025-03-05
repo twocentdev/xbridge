@@ -1,9 +1,13 @@
 import json
+import logging
 from pathlib import Path
 from zipfile import ZipFile
 
 from builders.table_builder import TableBuilder
 from parsers.variables_parser import VariablesParser
+
+
+logger = logging.getLogger(__name__)
 
 
 class TablesParser:
