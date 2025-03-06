@@ -17,6 +17,6 @@ input
 /xbridge.egg-info/
 input/instances/
 **/output
-/tests/test_files/**/modules
+/tests/test_files/**/modules/
 /tests/test_files/performance_instances/254900B46DYPR5UMD829_ES_DORA_DORA_2025-01-31_20250207092759000.xbrl
 /tests/test_files/performance_instances/254900B46DYPR5UMD829_ES_DORA_DORA_2025-01-31_20250207094032000.xbrl

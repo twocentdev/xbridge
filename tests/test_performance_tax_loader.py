@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         for file in self.output_path.iterdir():
-            os.remove(file)
+            self.__clean_up_subdir(file)
 
     def tearDown(self):
         for inst, resume in self.execution_times.items():
@@ -36,6 +36,13 @@ class MyTestCase(unittest.TestCase):
             print(f"Elapsed time for {file.name} is {end - start}")
             self.execution_times[file.name] = {"start": start, "end": end, "time": (end - start)}
 
+    def __clean_up_subdir(self, path: Path) -> bool:
+        if path.is_dir():
+            for file in path.iterdir():
+                self.__clean_up_subdir(file)
+            os.rmdir(path)
+        else:
+            os.remove(path)
 
 if __name__ == '__main__':
     unittest.main()
