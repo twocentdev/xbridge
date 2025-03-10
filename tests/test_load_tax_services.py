@@ -1,3 +1,4 @@
+import logging
 import os
 import unittest
 from pathlib import Path
@@ -9,6 +10,11 @@ class MyTestCase(unittest.TestCase):
 
     input_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load"
     modules_path: Path = input_path / "modules"
+
+    logging.basicConfig(
+        format="[%(asctime)s][%(name)s][%(levelname)s] --> %(message)s",
+        level=logging.DEBUG
+    )
 
     def setUp(self) -> None:
         for file in self.modules_path.iterdir():
@@ -42,6 +48,21 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists(), "Dim-Dom-Map not found")
         self.assertTrue((self.modules_path / "dora_dora_4.0.json").exists())
 
+    def test_check_format(self):
+        zip_file_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "dora.zip"
+        self.assertTrue(zip_file_path.exists())
+        self.assertTrue(zip_file_path.is_file())
+        self.assertTrue(zip_file_path.name.endswith("zip"))
+        TaxonomyLoaderServiceHandler.load(zip_file_path, self.modules_path, [])
+        sevenz_file_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "dora.zip"
+        self.assertTrue(sevenz_file_path.exists())
+        self.assertTrue(sevenz_file_path.is_file())
+        self.assertTrue(sevenz_file_path.name.endswith("zip"))
+        TaxonomyLoaderServiceHandler.load(sevenz_file_path, self.modules_path, [])
+        unzip_file_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load"
+        self.assertTrue(unzip_file_path.exists())
+        self.assertTrue(unzip_file_path.is_dir())
+        TaxonomyLoaderServiceHandler.load(unzip_file_path, self.modules_path, [])
 
 if __name__ == '__main__': \
         unittest.main()

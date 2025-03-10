@@ -13,6 +13,11 @@ class MyTestCase(unittest.TestCase):
     no_eba_instances_path = Path(__file__).parent / "test_files" / "instances_to_parse_no_eba"
     modules_path = Path(__file__).parent.parent / "res"
 
+    logging.basicConfig(
+        format="[%(asctime)s][%(name)s][%(levelname)s] --> %(message)s",
+        level=logging.DEBUG
+    )
+
     def setUp(self):
         for file in chain(
                 (self.eba_instances_path / "output").iterdir(),
@@ -20,10 +25,6 @@ class MyTestCase(unittest.TestCase):
             self.__clean_up_subdir(file)
 
     def test_parse_instances_eba(self):
-        logging.basicConfig(
-            format="[%(asctime)s][%(name)s][%(levelname)s] --> %(message)s",
-            level=logging.DEBUG
-        )
         self.assertTrue(self.eba_instances_path.exists(), "Instance path not found")
         self.assertTrue(self.eba_instances_path.is_dir(), "Instance path is not dir")
         self.assertTrue(self.modules_path.exists(), "Module(s) path not found")
@@ -35,10 +36,6 @@ class MyTestCase(unittest.TestCase):
                 InstanceParserServiceHandler.parse(file, self.modules_path, self.eba_instances_path / "output")
 
     def test_parse_instances_non_eba(self):
-        logging.basicConfig(
-            format="[%(asctime)s][%(name)s][%(levelname)s] --> %(message)s",
-            level=logging.DEBUG
-        )
         self.assertTrue(self.no_eba_instances_path.exists(), "Instance path not found")
         self.assertTrue(self.no_eba_instances_path.is_dir(), "Instance path is not dir")
         self.assertTrue(self.modules_path.exists(), "Module(s) path not found")

@@ -25,7 +25,17 @@ class ModulesParser:
         )
 
     @staticmethod
-    def from_json(zip_file: ZipFile, ref_file: str) -> ModuleBuilder:
+    def filter_files(files: [str], filters: [str]) -> [str]:
+        mod_files = filter(ModulesParser.file_is_mod, files)
+        if len(filters) > 0:
+            mod_files = filter(
+                lambda x: any(x.startswith(base) for base in filters),
+                mod_files
+            )
+        return mod_files
+
+    @staticmethod
+    def from_json(ref_file: str) -> ModuleBuilder:
         """
         Reads file and creates a module builder
         """
