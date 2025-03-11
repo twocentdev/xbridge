@@ -39,7 +39,7 @@ class TablesParser:
     @staticmethod
     def __extract_table_architecture(table_json) -> str:
         """
-        This method expects a dict from the table definicion json file. Path should be tableTemplates[0]/obj[0]
+        This method expects a dict from the table definition json file. Path should be tableTemplates[0]/obj[0]
         """
         if "datapoint" in table_json.keys():
             return "datapoints"

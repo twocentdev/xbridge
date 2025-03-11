@@ -2,7 +2,6 @@ import logging
 from pathlib import Path
 from zipfile import ZipFile
 
-import others.util
 from builders.dim_dom_map_builder import DimDomMapBuilder
 from builders.taxonomy_builder import TaxonomyBuilder
 from others import util
@@ -66,38 +65,12 @@ class TaxonomyLoaderServiceHandler:
             logger.fatal(f"Unknown format.")
             logger.info(f"Valid formats are compressed (zip or 7z) or not compressed at all.")
             raise ValueError(f"Unknown taxonomy format")
+        # TODO: clean memory
 
-        # TODO: if given tax file is 7z, parse to zip
-        # if tax_path.suffix not in [".zip", ".7z"]:
-        #     raise ValueError("Input file must be a zip or 7z file")
-        #
-        # parse file(s)
-        # with ZipFile(tax_path, mode="r") as file_obj:
-        #     tax_builder = TaxonomyBuilder()
-        #     mod_files = filter(ModulesParser.file_is_mod, file_obj.namelist())
-        #     if len(filtered_paths) > 0:
-        #         mod_files = filter(
-        #             lambda x: any(x.startswith(base) for base in filtered_paths),
-        #             mod_files
-        #         )
-        #     for file in mod_files:
-        #         logger.info(f"New module found in {file}")
-        #         module_builder = ModulesParser.from_json(file_obj, file)
-        #         # Parsing table(s) file(s)
-        #         for table_file in ModulesParser.tables_files_in_module(
-        #                 file_obj,
-        #                 ModulesParser.tables_in_module(file_obj, file)):
-        #             logger.info(f"New table found in {table_file}")
-        #             tab_builder = TablesParser.from_json(file_obj, table_file)
-        #             module_builder.add_table(tab_builder.build())
-        #         tax_builder.add_module(module_builder.build())
-        #     tax = tax_builder.build()
-        #     # TODO: clean memory
-        #
         tax = tax_builder.build()
 
-        map_builder: DimDomMapBuilder = DimDomMapParser.from_json(tax_path)
         # serialize model to file(s)
+        map_builder: DimDomMapBuilder = DimDomMapParser.from_json(tax_path)
         DimDomMapSerializer.to_json(
             modules_path,
             map_builder.build()
@@ -111,8 +84,6 @@ class TaxonomyLoaderServiceHandler:
                 modules_path,
                 module
             )
-        # TODO: zip files
-        # TODO: delete "temp"/"unzip" files, if necessary
 
     @staticmethod
     def __load(file_ref: ZipFile | Path, mod_files: [str]) -> TaxonomyBuilder:

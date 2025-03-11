@@ -1,14 +1,9 @@
 import json
 import logging
-import re
 from pathlib import Path
 from zipfile import ZipFile
 
-import pandas as pd
-
 from builders.module_builder import ModuleBuilder
-from builders.table_builder import TableBuilder
-from builders.variable_builder import VariableBuilder
 from parsers.tables_parser import TablesParser
 
 
