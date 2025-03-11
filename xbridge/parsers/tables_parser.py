@@ -59,9 +59,18 @@ class TablesParser:
         )
 
     @staticmethod
-    def from_json(zip_file: ZipFile, ref_file: str) -> TableBuilder:
-        bin_read_table = zip_file.read(ref_file)
-        table_json = json.loads(bin_read_table.decode("utf-8"))
+    def from_json(file_obj: ZipFile | Path, ref_file: str) -> TableBuilder:
+        if isinstance(file_obj, ZipFile):
+            bin_read_table = file_obj.read(ref_file)
+            table_json = json.loads(bin_read_table.decode("utf-8"))
+        elif isinstance(file_obj, Path):
+            with open(file_obj / ref_file, encoding="utf-8") as fl:
+                data = fl.read()
+                table_json = json.loads(data)
+        else:
+            err_msg = "Unknown file_obj type"
+            logger.fatal(err_msg)
+            raise ValueError(err_msg)
 
         tab_builder = TableBuilder()
 

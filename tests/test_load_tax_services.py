@@ -59,10 +59,19 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(sevenz_file_path.is_file())
         self.assertTrue(sevenz_file_path.name.endswith("zip"))
         TaxonomyLoaderServiceHandler.load(sevenz_file_path, self.modules_path, [])
-        unzip_file_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load"
+        unzip_file_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "www.eba.europa.eu"
         self.assertTrue(unzip_file_path.exists())
         self.assertTrue(unzip_file_path.is_dir())
         TaxonomyLoaderServiceHandler.load(unzip_file_path, self.modules_path, [])
+
+    def test_taxonomy_loader_unzip(self):
+        tax_path: Path = Path(__file__).parent / "test_files" / "taxonomies_to_load" / "www.eba.europa.eu"
+        self.assertTrue(tax_path.exists())
+        self.assertTrue(tax_path.is_dir())
+        TaxonomyLoaderServiceHandler.load(tax_path, self.modules_path, [])
+        self.assertTrue((self.modules_path / "ae_its-005-2020_2022-03-01.json").exists())
+        self.assertTrue((self.modules_path / "dim_dom_mapping.json").exists())
+        self.assertTrue((self.modules_path / "index.json").exists())
 
 if __name__ == '__main__': \
         unittest.main()

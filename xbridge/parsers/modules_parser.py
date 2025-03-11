@@ -4,6 +4,8 @@ import re
 from pathlib import Path
 from zipfile import ZipFile
 
+import pandas as pd
+
 from builders.module_builder import ModuleBuilder
 from builders.table_builder import TableBuilder
 from builders.variable_builder import VariableBuilder
@@ -53,13 +55,22 @@ class ModulesParser:
         return mod_builder
 
     @staticmethod
-    def tables_in_module(zip_file: ZipFile, ref_file: str) -> [str]:
+    def tables_in_module(file_obj: ZipFile | Path, ref_file: str) -> [str]:
         """
         Searches all tables declared in mod.json
         """
         tables: [str] = []
-        bin_read_mod = zip_file.read(ref_file)
-        mod_json = json.loads(bin_read_mod.decode("utf-8"))
+        if isinstance(file_obj, ZipFile):  # Check if given file_obj is zip or not.
+            bin_read_mod = file_obj.read(ref_file)
+            mod_json = json.loads(bin_read_mod.decode("utf-8"))
+        elif isinstance(file_obj, Path):
+            with open(file_obj / ref_file, encoding="utf-8") as fl:
+                data = fl.read()
+                mod_json = json.loads(data)
+        else:
+            err_msg = "Unknown file_obj type"
+            logger.fatal(err_msg)
+            raise ValueError(err_msg)
         for table in list(mod_json["tables"].keys()):
             if table[1:] in ("FI", "FootNotes"):
                 continue
@@ -68,9 +79,20 @@ class ModulesParser:
         return tables
 
     @staticmethod
-    def tables_files_in_module(zip_file: ZipFile, tables: [str]) -> [str]:
+    def tables_files_in_module(file_obj: ZipFile | Path, tables: [str]) -> [str]:
         files = []
-        for file in zip_file.namelist():
+        if isinstance(file_obj, ZipFile):
+            file_list = file_obj.namelist()
+        elif isinstance(file_obj, Path):
+            file_list = list(
+                map(
+                    lambda x: str(x).replace(f"{file_obj}/", ""), file_obj.glob("**/*")
+                ))
+        else:
+            err_msg = "Unknown file_obj type"
+            logger.fatal(err_msg)
+            raise ValueError(err_msg)
+        for file in file_list:
             if TablesParser.file_is_table(file) and Path(file).stem in tables:
                 files.append(file)
         logger.info(f"Table(s) file(s) found for module --> {files}")
