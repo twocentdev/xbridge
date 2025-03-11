@@ -14,13 +14,13 @@ class DimDomMapParser:
 
     @staticmethod
     def from_json(input_path: Path):
-        if input_path.is_file() and input_path.stem == "zip":
+        if input_path.is_file() and input_path.suffix == ".zip":
             logger.debug(f"About to create dim-dom map from zip {input_path}")
             with ZipFile(input_path, mode="r") as zip_file:
                 map_builder = DimDomMapBuilder()
                 for file in filter(DimDomMapParser.is_dim_def, zip_file.namelist()):
                     logger.info(f"Dimensions found in {file}")
-                    map_builder = DimDomMapParser.__from_json(zip_file, file)
+                    map_builder = DimDomMapParser.__from_json(zip_file, file, map_builder)
         elif input_path.is_dir():
             logger.debug(f"About to create dim-dom map from unzip {input_path}")
             map_builder = DimDomMapBuilder()
