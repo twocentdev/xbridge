@@ -43,7 +43,7 @@ class TaxonomyLoaderServiceHandler:
 
         # file is compress??
         if tax_path.name.endswith("zip"):
-            logger.info(f"Given taxonomy is compressed in a zip file.")
+            logger.debug(f"Given taxonomy is compressed in a zip file.")
             with ZipFile(tax_path, mode="r") as zip_file:
                 mod_files = ModulesParser.filter_files(
                     list(map(lambda x: str(x), zip_file.namelist())),
