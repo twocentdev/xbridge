@@ -11,20 +11,17 @@ from services.instance_parser_service_handler import InstanceParserServiceHandle
 
 class MyTestCase(unittest.TestCase):
 
-    instance_path: Path = (Path(__file__).parent.parent / "test_files" /
-                           "performance_instances")
+    instance_path: Path = Path(__file__).parent.parent / "test_files" / "performance_instances"
     output_path: Path = instance_path / "output"
     modules_path: Path = Path(__file__).parent.parent.parent / "res"
 
     report = {}
 
     def setUp(self):
-        config_path = (Path(__file__).parent.parent / "test_files" / "config"
-                       / "config.yaml")
+        config_path = Path(__file__).parent.parent / "test_files" / "config" / "config.yaml"
         AppConfig.load_config(config_path)
         app_config = AppConfig()
-        app_config.update_config("filing_indicators",
-                                 self.modules_path / "fil_ind_map.csv")
+        app_config.update_config("filing_indicators", self.modules_path / "fil_ind_map.csv")
         if not self.output_path.exists():
             os.mkdir(self.output_path)
         for file in self.output_path.iterdir():

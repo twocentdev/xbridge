@@ -2,14 +2,12 @@ import logging
 import os
 import unittest
 from pathlib import Path
-from services.taxonomy_loader_service_handler import \
-    TaxonomyLoaderServiceHandler
+from services.taxonomy_loader_service_handler import TaxonomyLoaderServiceHandler
 
 
 class MyTestCase(unittest.TestCase):
 
-    input_path: Path = (Path(__file__).parent.parent / "test_files" /
-                        "taxonomies_to_load")
+    input_path: Path = Path(__file__).parent.parent / "test_files" / "taxonomies_to_load"
     modules_path: Path = input_path / "modules"
 
     logging.basicConfig(
@@ -118,9 +116,7 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue((self.modules_path / "dora_dora_4.0.json").exists())
 
     def test_taxonomy_loader_single_filtered(self):
-        tax_path: Path = (Path(__file__).parent.parent /
-                          "test_files" / "performance_taxonomies" /
-                          "Full_Taxonomy.7z")
+        tax_path: Path = Path(__file__).parent.parent / "test_files" / "performance_taxonomies" / "Full_Taxonomy.7z"
         filters = ["www.eba.europa.eu/eu/fr/xbrl/crr/fws/ae"]
 
         self.assertTrue(tax_path.exists(), "Taxonomy path not found")
@@ -153,9 +149,7 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue((self.modules_path / "dora_dora_4.0.json").exists())
 
     def test_taxonomy_loader_multi_filtered(self):
-        tax_path: Path = (Path(__file__).parent.parent /
-                          "test_files" / "performance_taxonomies" /
-                          "Full_Taxonomy.7z")
+        tax_path: Path = Path(__file__).parent.parent / "test_files" / "performance_taxonomies" / "Full_Taxonomy.7z"
         filters = ["www.eba.europa.eu/eu/fr/xbrl/crr/fws/ae",
                    "www.eba.europa.eu/eu/fr/xbrl/crr/fws/dora"]
 
