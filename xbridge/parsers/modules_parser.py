@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -70,7 +71,7 @@ class ModulesParser:
             if table[1:] in ("FI", "FootNotes"):
                 continue
             tables.append(table[1:].lower().replace("-", "."))
-        logger.info(f"Tables found for module --> {tables}")
+        logger.debug(f"Tables found for module --> {tables}")
         return tables
 
     @staticmethod
@@ -81,7 +82,8 @@ class ModulesParser:
         elif isinstance(file_obj, Path):
             file_list = list(
                 map(
-                    lambda x: str(x).replace(f"{file_obj}/", ""), file_obj.glob("**/*")
+                    lambda x: str(x).replace(f"{file_obj}{os.sep}", "").replace("\\", "/"),
+                    file_obj.glob("**/*")
                 ))
         else:
             err_msg = "Unknown file_obj type"
@@ -90,5 +92,5 @@ class ModulesParser:
         for file in file_list:
             if TablesParser.file_is_table(file) and Path(file).stem in tables:
                 files.append(file)
-        logger.info(f"Table(s) file(s) found for module --> {files}")
+        logger.debug(f"Table(s) file(s) found for module --> {files}")
         return files

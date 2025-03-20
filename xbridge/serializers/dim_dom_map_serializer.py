@@ -1,7 +1,11 @@
 import json
+import logging
 from pathlib import Path
 
 from models.dim_dom_map import DimDomMap
+
+
+logger = logging.getLogger(__name__)
 
 
 class DimDomMapSerializer:
@@ -9,7 +13,10 @@ class DimDomMapSerializer:
     @staticmethod
     def to_json(output_path: Path, map_: DimDomMap):
         if not output_path.exists():
+            logger.warning(f"Directory {output_path} to save  does not exist. "
+                           f"Creating...")
             output_path.mkdir()
+
         with open(output_path / "dim_dom_mapping.json",
                   mode="w",
                   encoding="utf-8") as file:

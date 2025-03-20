@@ -14,21 +14,22 @@ logger = logging.getLogger(__name__)
 
 
 class InstanceParserServiceHandler:
+
     @staticmethod
-    def parse(input_path: str | Path,
+    def parse(inst_path: str | Path,
               modules_path: str | Path,
               output_path: str | Path):
-        logger.info(f"About to parse instance {input_path}.")
+        logger.info(f"About to parse instance {inst_path}.")
 
-        input_path = input_path if isinstance(input_path, Path) \
-            else Path(input_path)
+        inst_path = inst_path if isinstance(inst_path, Path) \
+            else Path(inst_path)
         modules_path = modules_path if isinstance(modules_path, Path) \
             else Path(modules_path)
         output_path = output_path if isinstance(output_path, Path) \
             else Path(output_path)
 
-        if not input_path.exists():
-            err_msg = f"File {input_path} not found"
+        if not inst_path.exists():
+            err_msg = f"File {inst_path} not found"
             logger.fatal(err_msg)
             raise FileNotFoundError(err_msg)
         if not modules_path.exists():
@@ -42,7 +43,7 @@ class InstanceParserServiceHandler:
             raise ValueError(err_msg)
 
         # Parse instance file
-        instance_builder = InstanceParser.from_xml(input_path)
+        instance_builder = InstanceParser.from_xml(inst_path)
         instance = instance_builder.build()
 
         # Load module
@@ -81,7 +82,7 @@ class InstanceParserServiceHandler:
         dim_dom_map = map_builder.build()
 
         # Save file
-        InstanceSerializer.to_csv(output_path / input_path.stem,
+        InstanceSerializer.to_csv(output_path / inst_path.stem,
                                   module,
                                   map_builder.build(),
                                   instance)

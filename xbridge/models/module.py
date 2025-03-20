@@ -1,5 +1,10 @@
+import logging
+
 from models.table import Table
 from models.variable import Variable
+
+
+logger = logging.getLogger(__name__)
 
 
 class Module:
@@ -93,7 +98,10 @@ class Module:
         for table in self.tables:
             if table.code == table_code:
                 return table
-        raise ValueError(f"Table {table_code} not found in module {self.code}")
+        err_msg = f"Table {table_code} not found in module {self.code}"
+        logger.error(err_msg)
+        logger.error(f"Available tables are: [{list(map(lambda x: x.code, self.tables))}]")
+        raise ValueError(f"{err_msg} - URL: {self.url} - TABLES: {list(map(lambda x: x.code, self.tables))}")
 
     def get_variables(self):
         variables: [Variable] = []

@@ -14,3 +14,6 @@ class DimDomMapBuilder:
         for dim, dom in self.__map.items():
             map_.add_mapping(dim, dom)
         return map_
+
+    def merge_map(self, other_map: dict):
+        self.__map = self.__map | other_map
