@@ -1,0 +1,8 @@
+mode: "tax"
+input_path: "sth"
+output_path: "None"
+modules_path: "other"
+filing_indicators: ""
+overwrite: false
+verbose: true
+filters: ["www.eba.europe.com", "cucumber", 1]
