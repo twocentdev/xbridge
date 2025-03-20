@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -81,7 +82,8 @@ class ModulesParser:
         elif isinstance(file_obj, Path):
             file_list = list(
                 map(
-                    lambda x: str(x).replace(f"{file_obj}/", ""), file_obj.glob("**/*")
+                    lambda x: str(x).replace(f"{file_obj}{os.sep}", "").replace("\\", "/"),
+                    file_obj.glob("**/*")
                 ))
         else:
             err_msg = "Unknown file_obj type"
