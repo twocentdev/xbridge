@@ -15,8 +15,11 @@ poetry.lock
 input
 /xbridge.egg-info/
 input/instances/
-/tests/test_files/**/output/**
-/tests/test_files/**/modules/**
-/tests/test_files/performance_instances/254900B46DYPR5UMD829_ES_DORA_DORA_2025-01-31_20250207092759000.xbrl
-/tests/test_files/performance_instances/254900B46DYPR5UMD829_ES_DORA_DORA_2025-01-31_20250207094032000.xbrl
 /res/
+# XBridge test files (too big)
+/tests/test_files/instances_to_parse_batch/**
+/tests/test_files/instances_to_parse_no_eba/**
+/tests/test_files/instances_to_parse_standard/**
+/tests/test_files/performance_instances/**
+/tests/test_files/performance_taxonomies/**
+/tests/test_files/taxonomies_to_load/**
