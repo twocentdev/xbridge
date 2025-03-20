@@ -14,7 +14,7 @@ class TableBuilder:
         self.__url = None
         self.__open_keys = []
         self.__variables = []
-        self.__attributes = None
+        self.__attributes = []
         self.__input_zip_path = None
         self.__architecture = None
         self.__columns = []
